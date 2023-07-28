@@ -1,0 +1,586 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "ef5287a8-523f-4ee9-88f5-9f3c55959b18",
+      "@type": "WorkflowCollection",
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "0200a4e9-9436-4f37-a3a0-432d4d16f040",
+          "collection": "/api/3/workflow_collections/ef5287a8-523f-4ee9-88f5-9f3c55959b18",
+          "steps": [
+            {
+              "uuid": "3583e5bc-72d1-495b-be9d-749e8503a99a",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "6fdfb037-b4b9-4ea9-893a-5abc90780947",
+              "@type": "WorkflowStep",
+              "name": "Get User Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "SAP Cloud Identity Directory Service",
+                "config": "''",
+                "params": {
+                  "filter": ""
+                },
+                "version": "1.0.0",
+                "connector": "SAP Cloud Identity Directory Service",
+                "operation": "get_user_details",
+                "operationTitle": "Get User Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrive all user information if no filter is specified",
+          "name": "Get User Details",
+          "tag": "#SAP Cloud Identity Directory Service",
+          "recordTags": [
+            "Sap cloud identity directory service",
+            "SAP Cloud Identity Directory Service"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/3583e5bc-72d1-495b-be9d-749e8503a99a",
+          "routes": [
+            {
+              "uuid": "6a48055f-b74f-4dfc-a3ff-68523e570aeb",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get User Details",
+              "sourceStep": "/api/3/workflow_steps/3583e5bc-72d1-495b-be9d-749e8503a99a",
+              "targetStep": "/api/3/workflow_steps/6fdfb037-b4b9-4ea9-893a-5abc90780947"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "b9462913-a9d1-4961-866c-a34fe625d53a",
+          "collection": "/api/3/workflow_collections/ef5287a8-523f-4ee9-88f5-9f3c55959b18",
+          "steps": [
+            {
+              "uuid": "89462381-04fe-44f2-85e2-9c9a30cefcbb",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "aae6991f-1db9-4ddd-aa16-f9bf2b1fa7e3",
+              "@type": "WorkflowStep",
+              "name": "Delete User",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "SAP Cloud Identity Directory Service",
+                "config": "''",
+                "params": {
+                  "userUUID": ""
+                },
+                "version": "1.0.0",
+                "connector": "SAP Cloud Identity Directory Service",
+                "operation": "delete_user",
+                "operationTitle": "Delete User"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Delete existing User.",
+          "name": "Delete User",
+          "tag": "#SAP Cloud Identity Directory Service",
+          "recordTags": [
+            "Sap cloud identity directory service",
+            "SAP Cloud Identity Directory Service"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/89462381-04fe-44f2-85e2-9c9a30cefcbb",
+          "routes": [
+            {
+              "uuid": "1fc50cf9-554d-4935-850e-a87e8e8fcc4c",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete User",
+              "sourceStep": "/api/3/workflow_steps/89462381-04fe-44f2-85e2-9c9a30cefcbb",
+              "targetStep": "/api/3/workflow_steps/aae6991f-1db9-4ddd-aa16-f9bf2b1fa7e3"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "23fd6025-818c-4e1d-94dd-28f6a78301a4",
+          "collection": "/api/3/workflow_collections/ef5287a8-523f-4ee9-88f5-9f3c55959b18",
+          "steps": [
+            {
+              "uuid": "4acb1ffc-b9d9-4c9a-b1a2-be5efb0c968e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "a123c796-bd81-432f-a6ab-5921333561ae",
+              "@type": "WorkflowStep",
+              "name": "Add User",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "SAP Cloud Identity Directory Service",
+                "config": "''",
+                "params": {
+                  "userDetails": ""
+                },
+                "version": "1.0.0",
+                "connector": "SAP Cloud Identity Directory Service",
+                "operation": "add_user",
+                "operationTitle": "Add User"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Add a new user to the directory service",
+          "name": "Add User",
+          "tag": "#SAP Cloud Identity Directory Service",
+          "recordTags": [
+            "Sap cloud identity directory service",
+            "SAP Cloud Identity Directory Service"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/4acb1ffc-b9d9-4c9a-b1a2-be5efb0c968e",
+          "routes": [
+            {
+              "uuid": "f5baf241-b9bd-48eb-b61f-0b04ebd29f7e",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Add User",
+              "sourceStep": "/api/3/workflow_steps/4acb1ffc-b9d9-4c9a-b1a2-be5efb0c968e",
+              "targetStep": "/api/3/workflow_steps/a123c796-bd81-432f-a6ab-5921333561ae"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "9cf116d5-d136-4932-a9bd-ab56100bd059",
+          "collection": "/api/3/workflow_collections/ef5287a8-523f-4ee9-88f5-9f3c55959b18",
+          "steps": [
+            {
+              "uuid": "a7927eb7-6bc3-499e-90a4-ef89f273f2f8",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "0fce8a1e-5c2d-4751-9774-49d0b52e925a",
+              "@type": "WorkflowStep",
+              "name": "Update User",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "SAP Cloud Identity Directory Service",
+                "config": "''",
+                "params": {
+                  "enable": "",
+                  "disable": "",
+                  "userUUID": "",
+                  "customJSON": ""
+                },
+                "version": "1.0.0",
+                "connector": "SAP Cloud Identity Directory Service",
+                "operation": "update_user",
+                "operationTitle": "Update User"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Update User Settings like enable, disable or change any availibe attributes.",
+          "name": "Update User",
+          "tag": "#SAP Cloud Identity Directory Service",
+          "recordTags": [
+            "Sap cloud identity directory service",
+            "SAP Cloud Identity Directory Service"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/a7927eb7-6bc3-499e-90a4-ef89f273f2f8",
+          "routes": [
+            {
+              "uuid": "9981d6c9-fffc-4c8c-994f-0ec72af5040c",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update User",
+              "sourceStep": "/api/3/workflow_steps/a7927eb7-6bc3-499e-90a4-ef89f273f2f8",
+              "targetStep": "/api/3/workflow_steps/0fce8a1e-5c2d-4751-9774-49d0b52e925a"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "ad4ce294-65be-4f76-a50b-86dc25344e8d",
+          "collection": "/api/3/workflow_collections/ef5287a8-523f-4ee9-88f5-9f3c55959b18",
+          "steps": [
+            {
+              "uuid": "1a1d26c7-e371-4a40-a0d9-dd1897afb534",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "988dea06-27a4-4425-b523-acdfc061a4ea",
+              "@type": "WorkflowStep",
+              "name": "Get Group Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "SAP Cloud Identity Directory Service",
+                "config": "''",
+                "params": {
+                  "filter": ""
+                },
+                "version": "1.0.0",
+                "connector": "SAP Cloud Identity Directory Service",
+                "operation": "get_group_details",
+                "operationTitle": "Get Group Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "",
+          "name": "Get Group Details",
+          "tag": "#SAP Cloud Identity Directory Service",
+          "recordTags": [
+            "Sap cloud identity directory service",
+            "SAP Cloud Identity Directory Service"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/1a1d26c7-e371-4a40-a0d9-dd1897afb534",
+          "routes": [
+            {
+              "uuid": "dea1d1b2-d50d-444d-acc1-16b9b26e8e1d",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Group Details",
+              "sourceStep": "/api/3/workflow_steps/1a1d26c7-e371-4a40-a0d9-dd1897afb534",
+              "targetStep": "/api/3/workflow_steps/988dea06-27a4-4425-b523-acdfc061a4ea"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "90d22f55-b49d-42f9-b4ee-d1719c705132",
+          "collection": "/api/3/workflow_collections/ef5287a8-523f-4ee9-88f5-9f3c55959b18",
+          "steps": [
+            {
+              "uuid": "28e53d1a-4211-4203-9cc9-70c6990e70b6",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "2003b38b-af24-468d-8ce5-403937544ec6",
+              "@type": "WorkflowStep",
+              "name": "Delete Group",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "SAP Cloud Identity Directory Service",
+                "config": "''",
+                "params": {
+                  "groupUUID": ""
+                },
+                "version": "1.0.0",
+                "connector": "SAP Cloud Identity Directory Service",
+                "operation": "delete_group",
+                "operationTitle": "Delete Group"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Delete an existing Group",
+          "name": "Delete Group",
+          "tag": "#SAP Cloud Identity Directory Service",
+          "recordTags": [
+            "Sap cloud identity directory service",
+            "SAP Cloud Identity Directory Service"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/28e53d1a-4211-4203-9cc9-70c6990e70b6",
+          "routes": [
+            {
+              "uuid": "2b50e62b-3364-4336-80b6-9d0d312749cf",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Group",
+              "sourceStep": "/api/3/workflow_steps/28e53d1a-4211-4203-9cc9-70c6990e70b6",
+              "targetStep": "/api/3/workflow_steps/2003b38b-af24-468d-8ce5-403937544ec6"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "802ee71b-7d06-4789-a2ec-812c836b9781",
+          "collection": "/api/3/workflow_collections/ef5287a8-523f-4ee9-88f5-9f3c55959b18",
+          "steps": [
+            {
+              "uuid": "c3e90b01-4910-4496-ad0a-1a6f4243d146",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "f77eb42c-5b31-4b7f-83ae-cca09e515813",
+              "@type": "WorkflowStep",
+              "name": "Add Group",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "SAP Cloud Identity Directory Service",
+                "config": "''",
+                "params": {
+                  "name": "",
+                  "customJSON": ""
+                },
+                "version": "1.0.0",
+                "connector": "SAP Cloud Identity Directory Service",
+                "operation": "add_group",
+                "operationTitle": "Add Group"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Add new Group",
+          "name": "Add Group",
+          "tag": "#SAP Cloud Identity Directory Service",
+          "recordTags": [
+            "Sap cloud identity directory service",
+            "SAP Cloud Identity Directory Service"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c3e90b01-4910-4496-ad0a-1a6f4243d146",
+          "routes": [
+            {
+              "uuid": "c82afdc7-49a1-4a68-bca8-ca717d3b9e11",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Add Group",
+              "sourceStep": "/api/3/workflow_steps/c3e90b01-4910-4496-ad0a-1a6f4243d146",
+              "targetStep": "/api/3/workflow_steps/f77eb42c-5b31-4b7f-83ae-cca09e515813"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "281472c2-b311-45bd-a264-bf796feda259",
+          "collection": "/api/3/workflow_collections/ef5287a8-523f-4ee9-88f5-9f3c55959b18",
+          "steps": [
+            {
+              "uuid": "6adc216f-324f-4982-a6e0-0c00582d4caf",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "9cf00e15-5a5a-42e0-b00b-6e17bb0f789b",
+              "@type": "WorkflowStep",
+              "name": "Update Group",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "SAP Cloud Identity Directory Service",
+                "config": "''",
+                "params": {
+                  "addUser": "",
+                  "removeUser": "",
+                  "userUUID": "",
+                  "groupUUID": "",
+                  "customJSON": ""
+                },
+                "version": "1.0.0",
+                "connector": "SAP Cloud Identity Directory Service",
+                "operation": "update_group",
+                "operationTitle": "Update Group"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Update existing Group",
+          "name": "Update Group",
+          "tag": "#SAP Cloud Identity Directory Service",
+          "recordTags": [
+            "Sap cloud identity directory service",
+            "SAP Cloud Identity Directory Service"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/6adc216f-324f-4982-a6e0-0c00582d4caf",
+          "routes": [
+            {
+              "uuid": "72d0500e-b064-40ee-a225-0001b8d4c191",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update Group",
+              "sourceStep": "/api/3/workflow_steps/6adc216f-324f-4982-a6e0-0c00582d4caf",
+              "targetStep": "/api/3/workflow_steps/9cf00e15-5a5a-42e0-b00b-6e17bb0f789b"
+            }
+          ]
+        }
+      ],
+      "name": "Sample - SAP Cloud Identity Directory Service - 1.0.0",
+      "description": "The identity directory provides a System for Cross-domain Identity Management (SCIM) 2.0 REST API for managing resources (users, groups and custom schemas). Consumers of this REST API should be familiar with System for Cross-domain Identity Management Protocol before managing their own resources.",
+      "visible": true,
+      "recordTags": [
+        "Sap cloud identity directory service",
+        "SAP Cloud Identity Directory Service"
+      ]
+    }
+  ]
+}

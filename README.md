@@ -1,5 +1,10 @@
 # SAP Cloud Identity Directory Service Connector
 
+## Author Information
+- Author: Fortinet SAP Solutions Team
+- Email: [SAP-request@fortinet.com](mailto:SAP-request@fortinet.com)
+- Homepage: [Fortinet SAP Community](https://community.fortinet.com/t5/Fortinet-for-SAP/gh-p/fortinet-for-sap)
+
 ## Description
 The identity directory provides a System for Cross-domain Identity Management (SCIM) 2.0 REST API for managing resources (users, groups and custom schemas). Consumers of this REST API should be familiar with System for Cross-domain Identity Management Protocol before managing their own resources.
 

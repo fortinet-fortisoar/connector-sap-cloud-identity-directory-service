@@ -145,7 +145,7 @@
         {
             "title": "Get Group Details",
             "operation": "get_group_details",
-            "description": "",
+            "description": "Get Details of existing Group. If no filter is specified, all groups will be returned.",
             "parameters": [
                 {
                     "title": "Filter",

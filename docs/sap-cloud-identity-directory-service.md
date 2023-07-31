@@ -211,7 +211,7 @@ The following automated operations can be included in playbooks and you can also
 
 - More details can be found here: https://api.sap.com/api/IdDS_SCIM/path/createUser
 
-- Example Request Body:
+- Example custom User input:
 ```json
 {
   "externalId": "34F578JK",
@@ -559,7 +559,7 @@ The following automated operations can be included in playbooks and you can also
 </td></tr><tr><td>Custom JSON</td><td>Provide a Custom Input (JSON format) to update the User
 </td></tr></tbody></table>
 
-- Example of Custom JSON:
+- Example of Custom JSON input:
 ```json
 {
   "schemas": [
@@ -664,20 +664,89 @@ The following automated operations can be included in playbooks and you can also
 ### Operation: Add Group
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Name</td><td>
-</td></tr><tr><td>Custom JSON</td><td>
+</td></tr><tr><td>Custom JSON</td><td>When creating a group, schemas and displayName attributes are required. If you add members to the group, the value (UUID) attribute of the member is required, while all other attributes of the member are optional.
 </td></tr></tbody></table>
+
+- More details can be found here: https://api.sap.com/api/IdDS_SCIM/path/createGroup
+- Example Custom JSON input:
+```json
+{
+  "id": "string",
+  "meta": {
+    "created": "2023-07-31T09:50:48.682Z",
+    "lastModified": "2023-07-31T09:50:48.682Z",
+    "location": "string",
+    "resourceType": "User",
+    "version": "string"
+  },
+  "schemas": [
+    "urn:ietf:params:scim:schemas:core:2.0:Group"
+  ],
+  "displayName": "Administrators",
+  "members": [
+    {
+      "value": "string",
+      "type": "User",
+      "$ref": "<path to access member>"
+    }
+  ],
+  "externalId": "string",
+  "urn:sap:cloud:scim:schemas:extension:custom:2.0:Group": {
+    "additionalId": "string",
+    "name": "string",
+    "description": "string"
+  }
+}
+```
 
 #### Output
 
-No output schema is available at this time.
+- Response Codes
+<table border=1><thead><tr><th>Response Code</th><th>Description</th></tr></thead>
+<tbody>
+    <tr><td>201</td><td>The group is created successfully. The maximum number of returned members per request is 20 000.</td></tr>
+    <tr><td>400</td><td>Wrong format or structure of the provided request body.</td></tr>
+    <tr><td>500</td><td>unexpected error</td></tr>
+</tbody></table>
+
+- Example Response:
+```json
+{
+  "id": "string",
+  "meta": {
+    "created": "2023-07-31T09:50:48.692Z",
+    "lastModified": "2023-07-31T09:50:48.692Z",
+    "location": "string",
+    "resourceType": "User",
+    "version": "string"
+  },
+  "schemas": [
+    "urn:ietf:params:scim:schemas:core:2.0:Group"
+  ],
+  "displayName": "Administrators",
+  "members": [
+    {
+      "value": "string",
+      "type": "User",
+      "$ref": "<path to access member>"
+    }
+  ],
+  "externalId": "string",
+  "urn:sap:cloud:scim:schemas:extension:custom:2.0:Group": {
+    "additionalId": "string",
+    "name": "string",
+    "description": "string"
+  }
+}
+```
 
 ### Operation: Update Group
 #### Input parameters
-<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Add User</td><td>Add User to group. User UUID required
-</td></tr><tr><td>Remove User</td><td>Remove User from group. User UUID required
+<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Add User</td><td>Add User to group. User UUID input required
+</td></tr><tr><td>Remove User</td><td>Remove User from group. User UUID input required
 </td></tr><tr><td>User UUID</td><td>
-</td></tr><tr><td>Group UUID</td><td>
-</td></tr><tr><td>Custom JSON</td><td>
+</td></tr><tr><td>Group UUID</td><td> Indentifier of the Group
+</td></tr><tr><td>Custom JSON</td><td> Custom input to performe custom operations like rename a Group
 </td></tr></tbody></table>
 
 #### Output

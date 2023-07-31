@@ -744,14 +744,42 @@ The following automated operations can be included in playbooks and you can also
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Add User</td><td>Add User to group. User UUID input required
 </td></tr><tr><td>Remove User</td><td>Remove User from group. User UUID input required
-</td></tr><tr><td>User UUID</td><td>
+</td></tr><tr><td>User UUID</td><td> Indentifier of the Group. Required if User should be added or removed.
 </td></tr><tr><td>Group UUID</td><td> Indentifier of the Group
 </td></tr><tr><td>Custom JSON</td><td> Custom input to performe custom operations like rename a Group
 </td></tr></tbody></table>
 
+- More examples can be found here: https://api.sap.com/api/IdDS_SCIM/path/patchGroup
+- Example of Custom JSON:
+```json
+{
+  "schemas": [
+    "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+  ],
+  "Operations": [
+    {
+      "op": "add",
+      "path": "members",
+      "value": [
+        {
+          "value": "c7fcdd8c-a280-40f6-9b6b-ecffc512dcd2"
+        }
+      ]
+    }
+  ]
+}
+```
+
 #### Output
 
-No output schema is available at this time.
+- Response Codes
+<table border=1><thead><tr><th>Response Code</th><th>Description</th></tr></thead>
+<tbody>
+    <tr><td>204</td><td>The group is updated successfully.</td></tr>
+    <tr><td>400</td><td>The provided identifier is not valid.</td></tr>
+    <tr><td>404</td><td>The group with the provided ID does not exist.</td></tr>
+    <tr><td>500</td><td>unexpected error</td></tr>
+</tbody></table>
 
 ## Included playbooks
 The `Sample - SAP Cloud Identity Directory Service - 1.0.0` playbook collection comes bundled with the SAP Cloud Identity Directory Service connector. These playbooks contain steps using which you can perform all supported actions. You can see bundled playbooks in the **Automation** > **Playbooks** section in FortiSOAR&trade; after importing the SAP Cloud Identity Directory Service connector.

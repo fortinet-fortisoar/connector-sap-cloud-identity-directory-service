@@ -9,7 +9,10 @@ Certified: No
 
 ## Installing the connector
 <p>Use the <strong>Content Hub</strong> to install the connector. For the detailed procedure to install a connector, click <a href="https://docs.fortinet.com/document/fortisoar/0.0.0/installing-a-connector/1/installing-a-connector" target="_top">here</a>.</p><p>You can also use the <code>yum</code> command as a root user to install the connector:</p>
-`yum install sap-cloud-identity-directory-service`
+
+```bash
+yum install sap-cloud-identity-directory-service
+```
 
 ## Prerequisites to configuring the connector
 - You must have the credentials of SAP Cloud Identity Directory Service server to which you will connect and perform automated operations.

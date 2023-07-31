@@ -42,7 +42,7 @@
                   "filter": ""
                 },
                 "version": "1.0.0",
-                "connector": "SAP Cloud Identity Directory Service",
+                "connector": "sap-cloud-identity-directory-service",
                 "operation": "get_group_details",
                 "operationTitle": "Get Group Details"
               },
@@ -127,7 +127,7 @@
                   "userDetails": ""
                 },
                 "version": "1.0.0",
-                "connector": "SAP Cloud Identity Directory Service",
+                "connector": "sap-cloud-identity-directory-service",
                 "operation": "add_user",
                 "operationTitle": "Add User"
               },
@@ -213,7 +213,7 @@
                   "customJSON": ""
                 },
                 "version": "1.0.0",
-                "connector": "SAP Cloud Identity Directory Service",
+                "connector": "sap-cloud-identity-directory-service",
                 "operation": "add_group",
                 "operationTitle": "Add Group"
               },
@@ -298,7 +298,7 @@
                   "groupUUID": ""
                 },
                 "version": "1.0.0",
-                "connector": "SAP Cloud Identity Directory Service",
+                "connector": "sap-cloud-identity-directory-service",
                 "operation": "delete_group",
                 "operationTitle": "Delete Group"
               },
@@ -405,7 +405,7 @@
                   "removeUser": ""
                 },
                 "version": "1.0.0",
-                "connector": "SAP Cloud Identity Directory Service",
+                "connector": "sap-cloud-identity-directory-service",
                 "operation": "update_group",
                 "operationTitle": "Update Group"
               },
@@ -472,7 +472,7 @@
                   "filter": ""
                 },
                 "version": "1.0.0",
-                "connector": "SAP Cloud Identity Directory Service",
+                "connector": "sap-cloud-identity-directory-service",
                 "operation": "get_user_details",
                 "operationTitle": "Get User Details"
               },
@@ -557,7 +557,7 @@
                   "userUUID": ""
                 },
                 "version": "1.0.0",
-                "connector": "SAP Cloud Identity Directory Service",
+                "connector": "sap-cloud-identity-directory-service",
                 "operation": "delete_user",
                 "operationTitle": "Delete User"
               },
@@ -663,7 +663,7 @@
                   "customJSON": ""
                 },
                 "version": "1.0.0",
-                "connector": "SAP Cloud Identity Directory Service",
+                "connector": "sap-cloud-identity-directory-service",
                 "operation": "update_user",
                 "operationTitle": "Update User"
               },

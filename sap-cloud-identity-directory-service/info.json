@@ -1,5 +1,5 @@
 {
-    "name": "SAP Cloud Identity Directory Service",
+    "name": "sap-cloud-identity-directory-service",
     "version": "1.0.0",
     "label": "SAP Cloud Identity Directory Service",
     "description": "The identity directory provides a System for Cross-domain Identity Management (SCIM) 2.0 REST API for managing resources (users, groups and custom schemas). Consumers of this REST API should be familiar with System for Cross-domain Identity Management Protocol before managing their own resources.",

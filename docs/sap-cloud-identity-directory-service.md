@@ -16,7 +16,7 @@ Certified: No
 
 ## Prerequisites to configuring the connector
 - You must have the credentials of SAP Cloud Identity Directory Service server to which you will connect and perform automated operations.
-    - How to generate API Keys, follow the Instractions [here](https://help.sap.com/docs/identity-authentication/identity-authentication/add-administrators#loiocefb742a36754b18bbe5c3503ac6d87c)
+    - How to generate API Keys, follow the Instructions [here](https://help.sap.com/docs/identity-authentication/identity-authentication/add-administrators#loiocefb742a36754b18bbe5c3503ac6d87c)
 - The FortiSOAR&trade; server should have outbound connectivity to port 443 on the SAP Cloud Identity Directory Service server.
 
 ## Minimum Permissions Required

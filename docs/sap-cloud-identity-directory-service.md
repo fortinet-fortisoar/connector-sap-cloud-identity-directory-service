@@ -54,6 +54,7 @@ The following automated operations can be included in playbooks and you can also
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Filter</td><td>Example: emails.value eq "user@example.com"
 </td></tr></tbody></table>
+
 - More Filter & Query Examples can be found here: https://api.sap.com/api/IdDS_SCIM/path/getUsers
 
 #### Output
@@ -189,7 +190,7 @@ The following automated operations can be included in playbooks and you can also
 
 ### Operation: Delete User
 #### Input parameters
-<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>User UUID</td><td>
+<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>User UUID</td><td>The UUID of the User which should get deleted
 </td></tr></tbody></table>
 
 #### Output

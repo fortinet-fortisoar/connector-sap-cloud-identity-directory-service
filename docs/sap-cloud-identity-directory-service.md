@@ -596,20 +596,70 @@ The following automated operations can be included in playbooks and you can also
 
 ### Operation: Get Group Details
 #### Input parameters
-<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Filter</td><td>
+<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Filter</td><td>Provide a Custom Filter. Example: displayName eq "Administrators"
 </td></tr></tbody></table>
 
+- More Filter & Query Examples can be found here: https://api.sap.com/api/IdDS_SCIM/path/getGroups
+
 #### Output
-No output schema is available at this time.
+- Response Codes
+<table border=1><thead><tr><th>Response Code</th><th>Description</th></tr></thead>
+<tbody>
+    <tr><td>204</td><td>The group resource is retrieved successfully. The maximum number of returned members per request is 20 000.</td></tr>
+    <tr><td>500</td><td>unexpected error</td></tr>
+</tbody></table>
+
+- Example Response:
+```json
+{
+  "Resources": [
+    {
+      "id": "<group_id>",
+      "meta": {
+        "created": "2020-10-14T14:33:39Z",
+        "lastModified": "2020-10-14T14:33:39Z",
+        "location": "https://tenant.testaccounts.ondemand.com/scim/Groups/<group_id>",
+        "version": "<version_id>",
+        "resourceType": "Group"
+      },
+      "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:Group",
+        "urn:sap:cloud:scim:schemas:extension:custom:2.0:Group"
+      ],
+      "displayName": "Tour Guides1",
+      "members": [
+        {
+          "value": "<member_id>",
+          "$ref": "https://tenant.testaccounts.ondemand.com/scim/Users/<member_id>",
+          "type": "User"
+        }
+      ]
+    }
+  ],
+  "totalResults": 1,
+  "itemsPerPage": 100,
+  "startIndex": 1,
+  "schemas": [
+    "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+  ]
+}
+```
 
 ### Operation: Delete Group
 #### Input parameters
-<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Group UUID</td><td>
+<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Group UUID of the Group which should get deleted</td><td>
 </td></tr></tbody></table>
 
 #### Output
 
-No output schema is available at this time.
+- Response Codes
+<table border=1><thead><tr><th>Response Code</th><th>Description</th></tr></thead>
+<tbody>
+    <tr><td>204</td><td>The group is deleted successfully.</td></tr>
+    <tr><td>400</td><td>The provided identifier is not valid.</td></tr>
+    <tr><td>404</td><td>The group with the provided ID does not exist.</td></tr>
+    <tr><td>500</td><td>unexpected error</td></tr>
+</tbody></table>
 
 ### Operation: Add Group
 #### Input parameters

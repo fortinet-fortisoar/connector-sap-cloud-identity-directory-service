@@ -4,7 +4,9 @@ The identity directory provides a System for Cross-domain Identity Management (S
 
 ### Version information
 Connector Version: 1.0.0
+
 Authored By: Fortinet SAP Solutions Team
+
 Certified: No
 
 ## Installing the connector
@@ -28,11 +30,11 @@ For the procedure to configure a connector, click [here](https://docs.fortinet.c
 ### Configuration parameters
 <p>In FortiSOAR&trade;, on the Connectors page, click the <strong>SAP Cloud Identity Directory Service</strong> connector row (if you are in the <strong>Grid</strong> view on the Connectors page) and in the <strong>Configurations</strong> tab enter the required configuration details:</p>
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead>
-<tbody><tr><td>Tenant ID</td><td>
+<tbody><tr><td>Tenant ID</td>ID can be found within the URL of the SAP IAS Service: https://`<Tenant ID>`.accounts.ondemand.com/admin/#<td>
 </td>
-</tr><tr><td>Client ID</td><td>
+</tr><tr><td>Client ID</td>Value of Secret ID<td>
 </td>
-</tr><tr><td>Client Secret</td><td>
+</tr><tr><td>Client Secret</td>Value of Secret Key<td>
 </td>
 </tr></tbody></table>
 

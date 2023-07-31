@@ -207,23 +207,392 @@ The following automated operations can be included in playbooks and you can also
 ### Operation: Add User
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>User details</td><td>When creating a user, schemas, userName and emails attributes are required.
-More details can be found here: https://api.sap.com/api/IdDS_SCIM/resource
 </td></tr></tbody></table>
+
+- More details can be found here: https://api.sap.com/api/IdDS_SCIM/path/createUser
+
+- Example Request Body:
+```json
+{
+  "externalId": "34F578JK",
+  "schemas": [
+    "urn:ietf:params:scim:schemas:core:2.0:User",
+    "urn:ietf:params:scim:schemas:extension:sap:2.0:User",
+    "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+  ],
+  "userName": "John",
+  "password": "Abcd1234",
+  "name": {
+    "familyName": "Smith",
+    "givenName": "Johny",
+    "formatted": "Mr. John Smith I",
+    "middleName": "Gilbert",
+    "honorificPrefix": "Mr.",
+    "honorificSuffix": "II"
+  },
+  "displayName": "Mr. John",
+  "nickName": "Johny10",
+  "profileUrl": "https://www.google.com/john.smith",
+  "title": "Software Developer",
+  "userType": "Employee",
+  "preferredLanguage": "English",
+  "locale": "EN",
+  "timezone": "Europe/Sofia",
+  "active": true,
+  "emails": [
+    {
+      "type": "work",
+      "value": "john.smith@sap-test.de",
+      "display": "john.smith",
+      "primary": true
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "work",
+      "value": "555-555-5555",
+      "display": "John's phone",
+      "primary": true
+    }
+  ],
+  "photos": [
+    {
+      "type": "photo",
+      "value": "https://www.facebook.com/john.smith",
+      "display": "J.Smith",
+      "primary": true
+    }
+  ],
+  "addresses": [
+    {
+      "formatted": "8 Europa Str.",
+      "primary": true,
+      "country": "BG",
+      "locality": "Sofia",
+      "postalCode": "1000",
+      "region": "SA",
+      "streetAddress": "Europa Str.",
+      "type": "work"
+    }
+  ],
+  "entitlements": [
+    {
+      "type": "work",
+      "value": "random",
+      "primary": true
+    }
+  ],
+  "roles": [
+    {
+      "type": "Read Users",
+      "value": "random",
+      "primary": true
+    }
+  ],
+  "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+    "division": "IDS",
+    "costCenter": "4130",
+    "organization": "IDStore",
+    "department": "Administration",
+    "employeeNumber": "701984",
+    "manager": {
+      "displayName": "Manager",
+      "value": "30ac69fe-5155-4d7f-8830-e9af6bf3e573",
+      "$ref": "http://localhost:8080/idds/scim/v2/Users/<manager>"
+    }
+  },
+  "urn:ietf:params:scim:schemas:extension:sap:2.0:User": {
+    "loginTime": "2023-07-31T09:32:41.889Z",
+    "sourceSystem": 0,
+    "sourceSystemId": "000T41F12",
+    "applicationId": "74P13R08",
+    "emailTemplateSetId": "emailTemplateSetId",
+    "sendMail": true,
+    "targetUrl": "https://google.com",
+    "mailVerified": true,
+    "userUuid": "30ac69fe-5155-4d7f-8830-e9af6bf3e401",
+    "userId": "P000008",
+    "sapUserName": "Random",
+    "status": "active",
+    "totpEnabled": true,
+    "webAuthEnabled": true,
+    "industry": "Banking",
+    "mfaEnabled": true,
+    "contactPreferences": {
+      "email": true,
+      "telephone": true
+    },
+    "socialIdentities": [
+      {
+        "socialId": "777K815BM",
+        "socialProvider": "LINKEDIN",
+        "dateOfLinking": "2023-07-31T09:32:41.889Z"
+      }
+    ],
+    "passwordDetails": {
+      "loginTime": "2023-07-31T09:32:41.889Z",
+      "failedLoginAttempts": 0,
+      "setTime": "2023-07-31T09:32:41.889Z",
+      "status": "enabled",
+      "passwordLockedTime": "2023-07-31T09:32:41.889Z",
+      "policy": "policy"
+    },
+    "emails": [
+      {
+        "type": "work",
+        "value": "john.smith@sap-test.de",
+        "display": "john.smith",
+        "primary": true,
+        "verified": true,
+        "verifiedTime": "2023-07-31T09:32:41.889Z"
+      }
+    ],
+    "corporateGroups": [
+      {
+        "value": "admin"
+      }
+    ],
+    "phoneNumbers": [
+      {
+        "type": "work",
+        "value": "555-555-5555",
+        "display": "John's phone",
+        "primary": true
+      }
+    ],
+    "validFrom": "2023-07-31T09:32:41.889Z",
+    "validTo": "2023-07-31T09:32:41.889Z"
+  }
+}
+```
 
 #### Output
 
-No output schema is available at this time.
+- Response Codes
+<table border=1><thead><tr><th>Response Code</th><th>Description</th></tr></thead>
+<tbody>
+    <tr><td>201</td><td>The user is created successfully.</td></tr>
+    <tr><td>400</td><td>Wrong format or structure of the provided request body.</td></tr>
+    <tr><td>409</td><td>The created user does not fulfill the uniqueness criteria for userName or emails.</td></tr>
+    <tr><td>500</td><td>unexpected error</td></tr>
+</tbody></table>
+
+- Example Response:
+```json
+{
+  "id": "string",
+  "externalId": "string",
+  "meta": {
+    "created": "2023-07-31T09:32:41.910Z",
+    "lastModified": "2023-07-31T09:32:41.910Z",
+    "location": "string",
+    "resourceType": "User",
+    "version": "string"
+  },
+  "schemas": [
+    "string"
+  ],
+  "userName": "string",
+  "password": "string",
+  "name": {
+    "familyName": "string",
+    "givenName": "string",
+    "formatted": "string",
+    "middleName": "string",
+    "honorificPrefix": "string",
+    "honorificSuffix": "string"
+  },
+  "displayName": "string",
+  "nickName": "string",
+  "profileUrl": "string",
+  "title": "string",
+  "userType": "string",
+  "preferredLanguage": "string",
+  "locale": "string",
+  "timezone": "string",
+  "active": true,
+  "emails": [
+    {
+      "type": "work",
+      "value": "string",
+      "display": "string",
+      "primary": true
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "work",
+      "value": "string",
+      "display": "string",
+      "primary": true
+    }
+  ],
+  "ims": [
+    {
+      "type": "aim",
+      "value": "string",
+      "display": "string",
+      "primary": true
+    }
+  ],
+  "photos": [
+    {
+      "type": "photo",
+      "value": "string",
+      "display": "string",
+      "primary": true
+    }
+  ],
+  "addresses": [
+    {
+      "formatted": "string",
+      "primary": true,
+      "country": "string",
+      "locality": "string",
+      "postalCode": "string",
+      "region": "string",
+      "streetAddress": "string",
+      "type": "work"
+    }
+  ],
+  "entitlements": [
+    {
+      "type": "string",
+      "value": "string",
+      "primary": true
+    }
+  ],
+  "roles": [
+    {
+      "type": "string",
+      "value": "string",
+      "primary": true
+    }
+  ],
+  "x509Certificates": [
+    {
+      "type": "string",
+      "value": "string",
+      "primary": true
+    }
+  ],
+  "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+    "division": "string",
+    "costCenter": "string",
+    "organization": "string",
+    "department": "string",
+    "employeeNumber": "string",
+    "manager": {
+      "displayName": "string",
+      "value": "string",
+      "$ref": "string"
+    }
+  },
+  "urn:ietf:params:scim:schemas:extension:sap:2.0:User": {
+    "loginTime": "2023-07-31T09:32:41.911Z",
+    "sourceSystem": 0,
+    "sourceSystemId": "string",
+    "applicationId": "string",
+    "emailTemplateSetId": "string",
+    "sendMail": true,
+    "targetUrl": "string",
+    "mailVerified": true,
+    "userUuid": "string",
+    "userId": "string",
+    "sapUserName": "string",
+    "status": "string",
+    "totpEnabled": true,
+    "webAuthEnabled": true,
+    "industry": "string",
+    "mfaEnabled": true,
+    "contactPreferences": {
+      "email": "string",
+      "telephone": "string"
+    },
+    "socialIdentities": {
+      "socialId": "string",
+      "socialProvider": "string",
+      "dateOfLinking": "2023-07-31T09:32:41.911Z"
+    },
+    "passwordDetails": {
+      "loginTime": "2023-07-31T09:32:41.911Z",
+      "failedLoginAttempts": 0,
+      "setTime": "2023-07-31T09:32:41.911Z",
+      "status": "string",
+      "passwordLockedTime": "2023-07-31T09:32:41.911Z",
+      "policy": "string"
+    },
+    "emails": [
+      {
+        "type": "string",
+        "value": "string",
+        "display": "string",
+        "primary": true,
+        "verified": true,
+        "verifiedTime": "2023-07-31T09:32:41.911Z"
+      }
+    ],
+    "corporateGroups": [
+      {
+        "value": "string"
+      }
+    ],
+    "phoneNumbers": [
+      {
+        "type": "work",
+        "value": "string",
+        "display": "string",
+        "primary": true
+      }
+    ],
+    "validFrom": "2023-07-31T09:32:41.911Z",
+    "validTo": "2023-07-31T09:32:41.911Z"
+  }
+}
+```
 
 ### Operation: Update User
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Enable</td><td>Enable User
 </td></tr><tr><td>Disable</td><td>Disable User
 </td></tr><tr><td>User UUID</td><td>Provide the Unique User ID
-</td></tr><tr><td>Custom JSON</td><td>
+</td></tr><tr><td>Custom JSON</td><td>Provide a Custom Input (JSON format) to update the User
 </td></tr></tbody></table>
 
+- Example of Custom JSON:
+```json
+{
+  "schemas": [
+    "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+  ],
+  "Operations": [
+    {
+      "op": "replace",
+      "path": "phoneNumbers[type eq \"work\" and value eq \"123\"]",
+      "value": [
+        {
+          "value": "456",
+          "display": "John Smith",
+          "primary": false,
+          "type": "work"
+        }
+      ]
+    }
+  ]
+}
+```
+- More Examples can be found here: https://api.sap.com/api/IdDS_SCIM/path/patchUser
+
 #### Output
-No output schema is available at this time.
+- Response Codes
+<table border=1><thead><tr><th>Response Code</th><th>Description</th></tr></thead>
+<tbody>
+    <tr><td>204</td><td>The user is updated successfully. If you are passing an email with missing primary value through the replace operation or it is false, it will be set automatically to true.</td></tr>
+    <tr><td>400</td><td>The provided identifier is not valid.</td></tr>
+    <tr><td>404</td><td>The user with the provided ID does not exist.</td></tr>
+    <tr><td>409</td><td>The updated user does not fulfill the uniqueness criteria for certain fields.</td></tr>
+    <tr><td>500</td><td>unexpected error</td></tr>
+</tbody></table>
 
 ### Operation: Get Group Details
 #### Input parameters

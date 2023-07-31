@@ -792,3 +792,8 @@ The `Sample - SAP Cloud Identity Directory Service - 1.0.0` playbook collection 
 - Update Group
 
 **Note**: If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection since the sample playbook collection gets deleted during connector upgrade and delete.
+
+## Additional Information
+- [SAP API Documentation](https://api.sap.com/api/IdDS_SCIM/resource/Users)
+- [SAP Identity Authentication Service Development Guide](https://help.sap.com/docs/identity-authentication/identity-authentication/development)
+- [How to setup authentication](https://help.sap.com/docs/identity-authentication/identity-authentication/add-administrators#loiocefb742a36754b18bbe5c3503ac6d87c)

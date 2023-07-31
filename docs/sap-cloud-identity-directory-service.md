@@ -50,25 +50,160 @@ The following automated operations can be included in playbooks and you can also
 <tr><td>Update Group</td><td>Update existing Group</td><td> <br/></td></tr>
 </tbody></table>
 
-### operation: Get User Details
+### Operation: Get User Details
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Filter</td><td>Example: emails.value eq "user@example.com"
-More Details: https://api.sap.com/api/IdDS_SCIM/path/getUsers
 </td></tr></tbody></table>
+- More Filter & Query Examples can be found here: https://api.sap.com/api/IdDS_SCIM/path/getUsers
 
 #### Output
 
- No output schema is available at this time.
+- Response Codes
+<table border=1><thead><tr><th>Response Code</th><th>Description</th></tr></thead>
+<tbody>
+    <tr><td>200</td><td>The user resource is retrieved successfully. The maximum number of returned user's groups per request is 1000.</td></tr>
+    <tr><td>500</td><td>unexpected error</td></tr>
+</tbody></table>
 
-### operation: Delete User
+- Example Response:
+```json
+{
+  "Resources": [
+    {
+      "id": "4609edbc-679e-428b-a06d-11e1f57443aa",
+      "externalId": "user1",
+      "meta": {
+        "created": "2020-10-26T16:03:49Z",
+        "lastModified": "2020-10-26T16:03:49Z",
+        "location": "https://agsecgqdp.accounts400.ondemand.com/scim/Users/4609edbc-679e-428b-a06d-11e1f57443aa",
+        "version": "0e7c79a2-bfc7-4080-8a75-bc2e4f00af26",
+        "resourceType": "User"
+      },
+      "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:User",
+        "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+        "urn:ietf:params:scim:schemas:extension:sap:2.0:User"
+      ],
+      "userName": "user1",
+      "name": {
+        "formatted": "Mr John Doe I",
+        "familyName": "user1",
+        "givenName": "John",
+        "middleName": "Doe",
+        "honorificPrefix": "Mr.",
+        "honorificSuffix": "I"
+      },
+      "displayName": "John Doe",
+      "nickName": "Johnie",
+      "profileUrl": "https://www.sap.com",
+      "title": "King",
+      "userType": "Employee",
+      "timezone": "Europe/Sofia",
+      "active": true,
+      "emails": [
+        {
+          "value": "john.doe@sap.com",
+          "display": "John Doe",
+          "primary": true,
+          "type": "work"
+        }
+      ],
+      "addresses": [
+        {
+          "streetAddress": "string",
+          "locality": "string",
+          "region": "string",
+          "postalCode": "string",
+          "country": "string",
+          "type": "string",
+          "primary": true
+        }
+      ],
+      "phoneNumbers": [
+        {
+          "value": "555-123-456",
+          "primary": false,
+          "type": "work"
+        },
+        {
+          "value": "555-123-333",
+          "primary": true,
+          "type": "mobile"
+        }
+      ],
+      "urn:ietf:params:scim:schemas:extension:sap:2.0:User": {
+        "userId": "P000000",
+        "userUuid": "4609edbc-679e-428b-a06d-11e1f57443aa",
+        "loginTime": "2020-10-26T10:54:59Z",
+        "sourceSystem": 15,
+        "sourceSystemId": "sourceSystem1",
+        "status": "active",
+        "industry": "Chemicals",
+        "addresses": [
+          {
+            "streetAddress": "string",
+            "streetAddress2": "string",
+            "locality": "string",
+            "region": "string",
+            "postalCode": "string",
+            "country": "string",
+            "type": "string",
+            "primary": true
+          }
+        ],
+        "passwordDetails": {
+          "loginTime": "2020-10-26T10:54:59Z",
+          "failedLoginAttempts": 0,
+          "setTime": "2020-10-22T07:49:38Z",
+          "status": "enabled",
+          "policy": "https://accounts.sap.com/policy/passwords/sap/enterprise/1.0"
+        },
+        "corporateGroups": [
+          {
+            "value": "string"
+          }
+        ]
+      },
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+        "division": "X",
+        "manager": {
+          "value": "d478473e-af5f-45dc-977c-8447313216dc",
+          "$ref": "https://tenant.accounts.ondemand.com/scim/Users/d478473e-af5f-45dc-977c-8447313216dc",
+          "displayName": "James"
+        },
+        "costCenter": "4130",
+        "organization": "Manufacturing company",
+        "department": "Marketing",
+        "employeeNumber": "751988"
+      }
+    }
+  ],
+  "totalResults": 12014,
+  "itemsPerPage": 1,
+  "startIndex": 1,
+  "schemas": [
+    "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+  ]
+}
+```
+
+### Operation: Delete User
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>User UUID</td><td>
 </td></tr></tbody></table>
 
 #### Output
-No output schema is available at this time.
+- Response Codes
+<table border=1><thead><tr><th>Response Code</th><th>Description</th></tr></thead>
+<tbody>
+    <tr><td>204</td><td>The user is deleted successfully.</td></tr>
+    <tr><td>400</td><td>The provided identifier is not valid.</td></tr>
+    <tr><td>404</td><td>The user with the provided ID does not exist.</td></tr>
+    <tr><td>500</td><td>unexpected error</td></tr>
+</tbody></table>
 
-### operation: Add User
+
+### Operation: Add User
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>User details</td><td>When creating a user, schemas, userName and emails attributes are required.
 More details can be found here: https://api.sap.com/api/IdDS_SCIM/resource
@@ -78,7 +213,7 @@ More details can be found here: https://api.sap.com/api/IdDS_SCIM/resource
 
 No output schema is available at this time.
 
-### operation: Update User
+### Operation: Update User
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Enable</td><td>Enable User
 </td></tr><tr><td>Disable</td><td>Disable User
@@ -89,7 +224,7 @@ No output schema is available at this time.
 #### Output
 No output schema is available at this time.
 
-### operation: Get Group Details
+### Operation: Get Group Details
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Filter</td><td>
 </td></tr></tbody></table>
@@ -97,7 +232,7 @@ No output schema is available at this time.
 #### Output
 No output schema is available at this time.
 
-### operation: Delete Group
+### Operation: Delete Group
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Group UUID</td><td>
 </td></tr></tbody></table>
@@ -106,7 +241,7 @@ No output schema is available at this time.
 
 No output schema is available at this time.
 
-### operation: Add Group
+### Operation: Add Group
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Name</td><td>
 </td></tr><tr><td>Custom JSON</td><td>
@@ -116,7 +251,7 @@ No output schema is available at this time.
 
 No output schema is available at this time.
 
-### operation: Update Group
+### Operation: Update Group
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Add User</td><td>Add User to group. User UUID required
 </td></tr><tr><td>Remove User</td><td>Remove User from group. User UUID required

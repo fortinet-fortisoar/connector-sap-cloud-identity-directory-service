@@ -132,7 +132,7 @@
                 },
                 {
                     "title": "Custom JSON",
-                    "type": "object",
+                    "type": "json",
                     "name": "customJSON",
                     "required": false,
                     "visible": true,

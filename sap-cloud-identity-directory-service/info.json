@@ -84,7 +84,7 @@
             "parameters": [
                 {
                     "title": "User details",
-                    "type": "object",
+                    "type": "json",
                     "name": "userDetails",
                     "required": true,
                     "visible": true,

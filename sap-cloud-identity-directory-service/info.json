@@ -28,7 +28,8 @@
                 "visible": true,
                 "editable": true,
                 "value": "",
-                "tooltip": "Client ID of System Identity Key"
+                "tooltip": "Client ID of System Identity Key",
+                "description": "Specify the Client ID of the System Identity Key configured in the SAP Environment."
             },
             {
                 "title": "Client Secret",
@@ -38,7 +39,8 @@
                 "visible": true,
                 "editable": true,
                 "value": null,
-                "tooltip": "Client Secret of System Identity Key"
+                "tooltip": "Client Secret of System Identity Key",
+                "description": "Specify the Client Secret of the System Identity Key configured in the SAP Environment."
             }
         ]
     },
@@ -56,7 +58,8 @@
                     "visible": true,
                     "editable": true,
                     "value": null,
-                    "tooltip": "Example: emails.value eq \"user@example.com\"\nMore Details: https://api.sap.com/api/IdDS_SCIM/path/getUsers"
+                    "tooltip": "Example: emails.value eq \"user@example.com\"\nMore Details: https://api.sap.com/api/IdDS_SCIM/path/getUsers",
+                    "description": "Filter the user details. Example: emails.value eq 'user@example.com'"
                 }
             ],
             "open": false
@@ -73,7 +76,8 @@
                     "required": true,
                     "visible": true,
                     "editable": true,
-                    "value": ""
+                    "value": "",
+                    "description": "The Unique User ID (UUID) of the user which should be deleted."
                 }
             ],
             "open": false
@@ -91,7 +95,8 @@
                     "visible": true,
                     "editable": true,
                     "value": null,
-                    "tooltip": "When creating a user, schemas, userName and emails attributes are required.\nMore details can be found here: https://api.sap.com/api/IdDS_SCIM/resource"
+                    "tooltip": "When creating a user, schemas, userName and emails attributes are required.\nMore details can be found here: https://api.sap.com/api/IdDS_SCIM/resource",
+                    "description": "The user details in JSON format. When creating a user, schemas, userName and emails attributes are required."
                 }
             ],
             "open": false
@@ -109,7 +114,8 @@
                     "visible": true,
                     "editable": true,
                     "value": false,
-                    "tooltip": "Enable User"
+                    "tooltip": "Enable User",
+                    "description": "Enable specified user"
                 },
                 {
                     "title": "Disable",
@@ -119,7 +125,8 @@
                     "visible": true,
                     "editable": true,
                     "value": false,
-                    "tooltip": "Disable User"
+                    "tooltip": "Disable User",
+                    "description": "Disable specified user"
                 },
                 {
                     "title": "User UUID",
@@ -129,7 +136,8 @@
                     "visible": true,
                     "editable": true,
                     "value": "",
-                    "tooltip": "Provide the Unique User ID"
+                    "tooltip": "Provide the Unique User ID",
+                    "description": "The Unique User ID (UUID) of the user which should be updated."
                 },
                 {
                     "title": "Custom JSON",
@@ -138,7 +146,8 @@
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": null
+                    "value": null,
+                    "description": "Custom JSON to update any available attributes."
                 }
             ],
             "open": false
@@ -155,7 +164,8 @@
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": ""
+                    "value": "",
+                    "description": "Filter the group details. Example: displayName eq 'Group Name'"
                 }
             ],
             "open": false
@@ -172,7 +182,8 @@
                     "required": true,
                     "visible": true,
                     "editable": true,
-                    "value": ""
+                    "value": "",
+                    "description": "The Unique Group ID (UUID) of the group which should be deleted."
                 }
             ],
             "open": false
@@ -189,16 +200,18 @@
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": ""
+                    "value": "",
+                    "description": "Name of the group"
                 },
                 {
                     "title": "Custom JSON",
-                    "type": "object",
+                    "type": "json",
                     "name": "customJSON",
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": null
+                    "value": null,
+                    "description": "Custom JSON to add any available attributes."
                 }
             ],
             "open": false
@@ -216,7 +229,8 @@
                     "visible": true,
                     "editable": true,
                     "value": false,
-                    "tooltip": "Add User to group. User UUID required"
+                    "tooltip": "Add User to group. User UUID required",
+                    "description": "Add User to group. User UUID required"
                 },
                 {
                     "title": "Remove User",
@@ -226,7 +240,8 @@
                     "visible": true,
                     "editable": true,
                     "value": false,
-                    "tooltip": "Remove User from group. User UUID required"
+                    "tooltip": "Remove User from group. User UUID required",
+                    "description": "Remove User from group. User UUID required"
                 },
                 {
                     "title": "User UUID",
@@ -235,7 +250,8 @@
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": ""
+                    "value": "",
+                    "description": "The Unique User ID (UUID) of the user which should be added or removed from the group."
                 },
                 {
                     "title": "Group UUID",
@@ -244,16 +260,18 @@
                     "required": true,
                     "visible": true,
                     "editable": true,
-                    "value": ""
+                    "value": "",
+                    "description": "The Unique Group ID (UUID) of the group which should be updated."
                 },
                 {
                     "title": "Custom JSON",
-                    "type": "object",
+                    "type": "json",
                     "name": "customJSON",
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": null
+                    "value": null,
+                    "description": "Custom JSON to update any available attributes."
                 }
             ],
             "open": false

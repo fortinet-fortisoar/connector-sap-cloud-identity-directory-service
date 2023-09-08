@@ -1,0 +1,281 @@
+{
+    "name": "sap-cloud-identity-directory-service",
+    "version": "1.0.0",
+    "label": "SAP Cloud Identity Directory Service",
+    "description": "The identity directory provides a System for Cross-domain Identity Management (SCIM) 2.0 REST API for managing resources (users, groups and custom schemas). Consumers of this REST API should be familiar with System for Cross-domain Identity Management Protocol before managing their own resources.",
+    "publisher": "Fortinet SAP Solutions Team",
+    "icon_small_name": "small.png",
+    "icon_large_name": "large.png",
+    "category": "",
+    "configuration": {
+        "fields": [
+            {
+                "title": "Tenant ID",
+                "type": "text",
+                "name": "tenantID",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "",
+                "tooltip": "Tenant ID of the SAP Environment",
+                "description": "Specify the tenant ID of the SAP Environment."
+            },
+            {
+                "title": "Client ID",
+                "type": "text",
+                "name": "clientID",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "",
+                "tooltip": "Client ID of System Identity Key",
+                "description": "Specify the Client ID of the System Identity Key configured in the SAP Environment."
+            },
+            {
+                "title": "Client Secret",
+                "type": "password",
+                "name": "clientSecret",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": null,
+                "tooltip": "Client Secret of System Identity Key",
+                "description": "Specify the Client Secret of the System Identity Key configured in the SAP Environment."
+            }
+        ]
+    },
+    "operations": [
+        {
+            "title": "Get User Details",
+            "operation": "get_user_details",
+            "description": "Retrive all user information if no filter is specified",
+            "parameters": [
+                {
+                    "title": "Filter",
+                    "type": "text",
+                    "name": "filter",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Example: emails.value eq \"user@example.com\"\nMore Details: https://api.sap.com/api/IdDS_SCIM/path/getUsers",
+                    "description": "Filter the user details. Example: emails.value eq 'user@example.com'"
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Delete User",
+            "operation": "delete_user",
+            "description": "Delete existing User.",
+            "parameters": [
+                {
+                    "title": "User UUID",
+                    "type": "text",
+                    "name": "userUUID",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "The Unique User ID (UUID) of the user which should be deleted."
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Add User",
+            "operation": "add_user",
+            "description": "Add a new user to the directory service",
+            "parameters": [
+                {
+                    "title": "User details",
+                    "type": "json",
+                    "name": "userDetails",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "When creating a user, schemas, userName and emails attributes are required.\nMore details can be found here: https://api.sap.com/api/IdDS_SCIM/resource",
+                    "description": "The user details in JSON format. When creating a user, schemas, userName and emails attributes are required."
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Update User",
+            "operation": "update_user",
+            "description": "Update User Settings like enable, disable or change any availibe attributes.",
+            "parameters": [
+                {
+                    "title": "Enable",
+                    "type": "checkbox",
+                    "name": "enable",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": false,
+                    "tooltip": "Enable User",
+                    "description": "Enable specified user"
+                },
+                {
+                    "title": "Disable",
+                    "type": "checkbox",
+                    "name": "disable",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": false,
+                    "tooltip": "Disable User",
+                    "description": "Disable specified user"
+                },
+                {
+                    "title": "User UUID",
+                    "type": "text",
+                    "name": "userUUID",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Provide the Unique User ID",
+                    "description": "The Unique User ID (UUID) of the user which should be updated."
+                },
+                {
+                    "title": "Custom JSON",
+                    "type": "json",
+                    "name": "customJSON",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "description": "Custom JSON to update any available attributes."
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Get Group Details",
+            "operation": "get_group_details",
+            "description": "Get Details of existing Group. If no filter is specified, all groups will be returned.",
+            "parameters": [
+                {
+                    "title": "Filter",
+                    "type": "text",
+                    "name": "filter",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "Filter the group details. Example: displayName eq 'Group Name'"
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Delete Group",
+            "operation": "delete_group",
+            "description": "Delete an existing Group",
+            "parameters": [
+                {
+                    "title": "Group UUID",
+                    "type": "text",
+                    "name": "groupUUID",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "The Unique Group ID (UUID) of the group which should be deleted."
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Add Group",
+            "operation": "add_group",
+            "description": "Add new Group",
+            "parameters": [
+                {
+                    "title": "Name",
+                    "type": "text",
+                    "name": "name",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "Name of the group"
+                },
+                {
+                    "title": "Custom JSON",
+                    "type": "json",
+                    "name": "customJSON",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "description": "Custom JSON to add any available attributes."
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Update Group",
+            "operation": "update_group",
+            "description": "Update existing Group",
+            "parameters": [
+                {
+                    "title": "Add User",
+                    "type": "checkbox",
+                    "name": "addUser",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": false,
+                    "tooltip": "Add User to group. User UUID required",
+                    "description": "Add User to group. User UUID required"
+                },
+                {
+                    "title": "Remove User",
+                    "type": "checkbox",
+                    "name": "removeUser",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": false,
+                    "tooltip": "Remove User from group. User UUID required",
+                    "description": "Remove User from group. User UUID required"
+                },
+                {
+                    "title": "User UUID",
+                    "type": "text",
+                    "name": "userUUID",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "The Unique User ID (UUID) of the user which should be added or removed from the group."
+                },
+                {
+                    "title": "Group UUID",
+                    "type": "text",
+                    "name": "groupUUID",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "The Unique Group ID (UUID) of the group which should be updated."
+                },
+                {
+                    "title": "Custom JSON",
+                    "type": "json",
+                    "name": "customJSON",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "description": "Custom JSON to update any available attributes."
+                }
+            ],
+            "open": false
+        }
+    ],
+    "forked_from": false
+}

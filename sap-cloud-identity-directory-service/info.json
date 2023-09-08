@@ -1,281 +1,878 @@
 {
-    "name": "sap-cloud-identity-directory-service",
-    "version": "1.0.0",
-    "label": "SAP Cloud Identity Directory Service",
-    "description": "The identity directory provides a System for Cross-domain Identity Management (SCIM) 2.0 REST API for managing resources (users, groups and custom schemas). Consumers of this REST API should be familiar with System for Cross-domain Identity Management Protocol before managing their own resources.",
-    "publisher": "Fortinet SAP Solutions Team",
-    "icon_small_name": "small.png",
-    "icon_large_name": "large.png",
-    "category": "",
-    "configuration": {
-        "fields": [
-            {
-                "title": "Tenant ID",
-                "type": "text",
-                "name": "tenantID",
-                "required": true,
-                "visible": true,
-                "editable": true,
-                "value": "",
-                "tooltip": "Tenant ID of the SAP Environment",
-                "description": "Specify the tenant ID of the SAP Environment."
-            },
-            {
-                "title": "Client ID",
-                "type": "text",
-                "name": "clientID",
-                "required": true,
-                "visible": true,
-                "editable": true,
-                "value": "",
-                "tooltip": "Client ID of System Identity Key",
-                "description": "Specify the Client ID of the System Identity Key configured in the SAP Environment."
-            },
-            {
-                "title": "Client Secret",
-                "type": "password",
-                "name": "clientSecret",
-                "required": true,
-                "visible": true,
-                "editable": true,
-                "value": null,
-                "tooltip": "Client Secret of System Identity Key",
-                "description": "Specify the Client Secret of the System Identity Key configured in the SAP Environment."
-            }
-        ]
-    },
-    "operations": [
+  "name": "sap-cloud-identity-directory-service",
+  "version": "1.0.0",
+  "label": "SAP Cloud Identity Directory Service",
+  "description": "The identity directory provides a System for Cross-domain Identity Management (SCIM) 2.0 REST API for managing resources (users, groups and custom schemas). Consumers of this REST API should be familiar with System for Cross-domain Identity Management Protocol before managing their own resources.",
+  "publisher": "Fortinet",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "category": "Identity and Access Management",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Tenant ID",
+        "type": "text",
+        "name": "tenantID",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "value": "",
+        "tooltip": "Specify Tenant ID of the SAP Environment",
+        "description": "Specify the tenant ID of the SAP Environment."
+      },
+      {
+        "title": "Client ID",
+        "type": "text",
+        "name": "clientID",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "value": "",
+        "tooltip": "Specify the Client ID of System Identity Key configured in the SAP Environment.",
+        "description": "Specify the Client ID of the System Identity Key configured in the SAP Environment."
+      },
+      {
+        "title": "Client Secret",
+        "type": "password",
+        "name": "clientSecret",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "value": "",
+        "tooltip": "Specify the Client Secret of the System Identity Key configured in the SAP Environment.",
+        "description": "Specify the Client Secret of the System Identity Key configured in the SAP Environment."
+      },
+      {
+        "name": "verify_ssl",
+        "title": "Verify SSL",
+        "type": "checkbox",
+        "editable": true,
+        "visible": true,
+        "required": false,
+        "value": true,
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set as True."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "title": "Get User List",
+      "operation": "get_user_list",
+      "description": "Retrieves a list of users based on input parameters specified.",
+      "parameters": [
         {
-            "title": "Get User Details",
-            "operation": "get_user_details",
-            "description": "Retrive all user information if no filter is specified",
-            "parameters": [
-                {
-                    "title": "Filter",
-                    "type": "text",
-                    "name": "filter",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "value": null,
-                    "tooltip": "Example: emails.value eq \"user@example.com\"\nMore Details: https://api.sap.com/api/IdDS_SCIM/path/getUsers",
-                    "description": "Filter the user details. Example: emails.value eq 'user@example.com'"
-                }
-            ],
-            "open": false
+          "title": "User UUID",
+          "type": "text",
+          "name": "id",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g. 313b0556-8810-48ee-a335-b666d1b786ff",
+          "tooltip": "Specify the UUID of the user to retrieve its details.",
+          "description": "Specify the UUID of the user to retrieve its details. e.g. 313b0556-8810-48ee-a335-b666d1b786ff"
         },
         {
-            "title": "Delete User",
-            "operation": "delete_user",
-            "description": "Delete existing User.",
-            "parameters": [
-                {
-                    "title": "User UUID",
-                    "type": "text",
-                    "name": "userUUID",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "description": "The Unique User ID (UUID) of the user which should be deleted."
-                }
-            ],
-            "open": false
+          "title": "Username",
+          "type": "text",
+          "name": "userName",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g. John",
+          "tooltip": "Specify the user name of user to retrieve the details.",
+          "description": "Specify the user name of user to retrieve the details. e.g. John"
         },
         {
-            "title": "Add User",
-            "operation": "add_user",
-            "description": "Add a new user to the directory service",
-            "parameters": [
-                {
-                    "title": "User details",
-                    "type": "json",
-                    "name": "userDetails",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": null,
-                    "tooltip": "When creating a user, schemas, userName and emails attributes are required.\nMore details can be found here: https://api.sap.com/api/IdDS_SCIM/resource",
-                    "description": "The user details in JSON format. When creating a user, schemas, userName and emails attributes are required."
-                }
-            ],
-            "open": false
+          "title": "User Type",
+          "type": "select",
+          "name": "userType",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the type of users which you want to retrieve.",
+          "description": "Specify the type of users which you want to retrieve. You can choose from following: \"Customer\", \"Employee\", \"Partner\", \"Public\", \"External\", \"Onboardee\"",
+          "options": [
+            "Customer",
+            "Employee",
+            "Partner",
+            "Public",
+            "External",
+            "Onboardee"
+          ]
         },
         {
-            "title": "Update User",
-            "operation": "update_user",
-            "description": "Update User Settings like enable, disable or change any availibe attributes.",
-            "parameters": [
-                {
-                    "title": "Enable",
-                    "type": "checkbox",
-                    "name": "enable",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "value": false,
-                    "tooltip": "Enable User",
-                    "description": "Enable specified user"
-                },
-                {
-                    "title": "Disable",
-                    "type": "checkbox",
-                    "name": "disable",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "value": false,
-                    "tooltip": "Disable User",
-                    "description": "Disable specified user"
-                },
-                {
-                    "title": "User UUID",
-                    "type": "text",
-                    "name": "userUUID",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "tooltip": "Provide the Unique User ID",
-                    "description": "The Unique User ID (UUID) of the user which should be updated."
-                },
-                {
-                    "title": "Custom JSON",
-                    "type": "json",
-                    "name": "customJSON",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "value": null,
-                    "description": "Custom JSON to update any available attributes."
-                }
-            ],
-            "open": false
+          "title": "Filter Query",
+          "type": "text",
+          "name": "filter",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "placeholder": "Example: emails.value eq \"user@example.com\" and displayName eq \"John\"",
+          "tooltip": "Specify the query based on which you want to retrieve the users.",
+          "description": "Specify the query based on which you want to retrieve the users. Example: emails.value eq \"user@example.com\" and displayName eq \"John\".\nFor more details visit: https://api.sap.com/api/IdDS_SCIM/path/getUsers"
         },
         {
-            "title": "Get Group Details",
-            "operation": "get_group_details",
-            "description": "Get Details of existing Group. If no filter is specified, all groups will be returned.",
-            "parameters": [
-                {
-                    "title": "Filter",
-                    "type": "text",
-                    "name": "filter",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "description": "Filter the group details. Example: displayName eq 'Group Name'"
-                }
-            ],
-            "open": false
+          "title": "Start ID",
+          "type": "text",
+          "name": "start_id",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "initial",
+          "tooltip": "Specify the start ID of the user which is returned as the first entry of the query result. Note: if this parameter is not provided then you will not get the \"nextId\" in response to fetch remaining pages.",
+          "description": "Specify the start ID of the user which is returned as the first entry of the query result. By default it is set to initial which will retrieve the first page. Note: if this parameter is not provided then you will not get the \"nextId\" in response to fetch remaining pages."
         },
         {
-            "title": "Delete Group",
-            "operation": "delete_group",
-            "description": "Delete an existing Group",
-            "parameters": [
-                {
-                    "title": "Group UUID",
-                    "type": "text",
-                    "name": "groupUUID",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "description": "The Unique Group ID (UUID) of the group which should be deleted."
-                }
-            ],
-            "open": false
-        },
-        {
-            "title": "Add Group",
-            "operation": "add_group",
-            "description": "Add new Group",
-            "parameters": [
-                {
-                    "title": "Name",
-                    "type": "text",
-                    "name": "name",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "description": "Name of the group"
-                },
-                {
-                    "title": "Custom JSON",
-                    "type": "json",
-                    "name": "customJSON",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "value": null,
-                    "description": "Custom JSON to add any available attributes."
-                }
-            ],
-            "open": false
-        },
-        {
-            "title": "Update Group",
-            "operation": "update_group",
-            "description": "Update existing Group",
-            "parameters": [
-                {
-                    "title": "Add User",
-                    "type": "checkbox",
-                    "name": "addUser",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "value": false,
-                    "tooltip": "Add User to group. User UUID required",
-                    "description": "Add User to group. User UUID required"
-                },
-                {
-                    "title": "Remove User",
-                    "type": "checkbox",
-                    "name": "removeUser",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "value": false,
-                    "tooltip": "Remove User from group. User UUID required",
-                    "description": "Remove User from group. User UUID required"
-                },
-                {
-                    "title": "User UUID",
-                    "type": "text",
-                    "name": "userUUID",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "description": "The Unique User ID (UUID) of the user which should be added or removed from the group."
-                },
-                {
-                    "title": "Group UUID",
-                    "type": "text",
-                    "name": "groupUUID",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "description": "The Unique Group ID (UUID) of the group which should be updated."
-                },
-                {
-                    "title": "Custom JSON",
-                    "type": "json",
-                    "name": "customJSON",
-                    "required": false,
-                    "visible": true,
-                    "editable": true,
-                    "value": null,
-                    "description": "Custom JSON to update any available attributes."
-                }
-            ],
-            "open": false
+          "title": "Size",
+          "type": "integer",
+          "name": "count",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 100,
+          "tooltip": "Specify the maximum number of items to be returned per page. Maximum it will retrieve 100 results per page.",
+          "description": "Specify the maximum number of items to be returned per page. A negative value is interpreted as 0, which means that no results should be returned. Anything above 100 will return only 100 results per page."
         }
-    ],
-    "forked_from": false
+      ],
+      "category": "investigation",
+      "annotation": "get_user_list",
+      "output_schema": {
+        "Resources": [
+          {
+            "id": "",
+            "meta": {
+              "created": "",
+              "lastModified": "",
+              "location": "",
+              "resourceType": ""
+            },
+            "schemas": [],
+            "userName": "",
+            "name": {
+              "familyName": "",
+              "givenName": ""
+            },
+            "displayName": "",
+            "userType": "",
+            "locale": "",
+            "active": "",
+            "emails": [
+              {
+                "value": "",
+                "primary": ""
+              }
+            ],
+            "addresses": [
+              {
+                "primary": "",
+                "locality": "",
+                "type": ""
+              }
+            ],
+            "urn:ietf:params:scim:schemas:extension:sap:2.0:User": {
+              "emails": [
+                {
+                  "verified": "",
+                  "value": "",
+                  "primary": ""
+                }
+              ],
+              "addresses": [
+                {
+                  "locality": "",
+                  "type": "",
+                  "primary": ""
+                }
+              ],
+              "loginTime": "",
+              "sourceSystem": "",
+              "userUuid": "",
+              "mailVerified": "",
+              "userId": "",
+              "status": "",
+              "passwordDetails": {
+                "failedLoginAttempts": "",
+                "passwordLockedTime": "",
+                "setTime": "",
+                "status": "",
+                "policy": ""
+              }
+            }
+          }
+        ],
+        "totalResults": "",
+        "itemsPerPage": "",
+        "startId": "",
+        "nextId": "",
+        "schemas": []
+      },
+      "enabled": true
+    },
+    {
+      "title": "Delete User",
+      "operation": "delete_user",
+      "description": "Delete existing user from Identity directory based on User UUID.",
+      "parameters": [
+        {
+          "title": "User UUID",
+          "type": "text",
+          "name": "userUUID",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify the UUID of user you want to delete from Identity Directory",
+          "tooltip": "Specify the UUID of user you want to delete from Identity Directory"
+        }
+      ],
+      "category": "investigation",
+      "annotation": "delete_user",
+      "output_schema": {
+        "status": "",
+        "message": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Create User",
+      "operation": "create_user",
+      "description": "Creates a new user to the Identity directory.",
+      "parameters": [
+        {
+          "title": "Email Address",
+          "type": "text",
+          "name": "email",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the email address of user to be created in Identity Directory",
+          "description": "Specify the email address of user to be created in Identity Directory"
+        },
+        {
+          "title": "Login Name",
+          "type": "text",
+          "name": "userName",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the login name of user to be created in Identity Directory",
+          "description": "Specify the login name of user to be created in Identity Directory"
+        },
+        {
+          "title": "First Name",
+          "type": "text",
+          "name": "givenName",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "",
+          "tooltip": "Specify the first name of user to be created in Identity Directory.",
+          "description": "Specify the first name of user to be created in Identity Directory."
+        },
+        {
+          "title": "Last Name",
+          "type": "text",
+          "name": "familyName",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "",
+          "tooltip": "Specify the last name of user to be created in Identity Directory",
+          "description": "Specify the last name of user to be created in Identity Directory"
+        },
+        {
+          "title": "User Type",
+          "type": "select",
+          "name": "userType",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "Public",
+          "tooltip": "select the user type.",
+          "description": "select the user type. You can choose from following: \"Customer\", \"Employee\", \"Partner\", \"Public\", \"External\", \"Onboardee\". By default it is set as Public",
+          "options": [
+            "Customer",
+            "Employee",
+            "Partner",
+            "Public",
+            "External",
+            "Onboardee"
+          ]
+        },
+        {
+          "title": "User details",
+          "type": "json",
+          "name": "userDetails",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": {
+            "schemas": [
+              "urn:ietf:params:scim:schemas:extension:sap:2.0:User",
+              "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+            ],
+            "password": "",
+            "name": {
+              "familyName": "",
+              "givenName": "",
+              "formatted": "",
+              "middleName": "",
+              "honorificPrefix": "",
+              "honorificSuffix": ""
+            },
+            "profileUrl": "",
+            "title": "",
+            "preferredLanguage": "",
+            "locale": "",
+            "timezone": "",
+            "active": true,
+            "emails": [
+              {
+                "type": "",
+                "value": "",
+                "display": "",
+                "primary": false
+              }
+            ],
+            "phoneNumbers": [
+              {
+                "type": "",
+                "value": "",
+                "display": "",
+                "primary": true
+              }
+            ],
+            "photos": [
+              {
+                "type": "",
+                "value": "",
+                "display": "",
+                "primary": true
+              }
+            ],
+            "addresses": [
+              {
+                "formatted": "",
+                "primary": true,
+                "country": "",
+                "locality": "",
+                "postalCode": "",
+                "region": "",
+                "streetAddress": "",
+                "type": ""
+              }
+            ],
+            "entitlements": [
+              {
+                "type": "",
+                "value": "",
+                "primary": true
+              }
+            ],
+            "roles": [
+              {
+                "type": "",
+                "value": "",
+                "primary": true
+              }
+            ],
+            "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+              "division": "",
+              "costCenter": "",
+              "organization": "",
+              "department": "",
+              "employeeNumber": "",
+              "manager": {
+                "value": ""
+              }
+            },
+            "urn:ietf:params:scim:schemas:extension:sap:2.0:User": {
+              "sourceSystem": 100,
+              "sourceSystemId": "",
+              "applicationId": "",
+              "emailTemplateSetId": "",
+              "sendMail": true,
+              "targetUrl": "",
+              "mailVerified": true,
+              "userUuid": "",
+              "sapUserName": "",
+              "status": "",
+              "industry": "",
+              "validFrom": "",
+              "validTo": ""
+            }
+          },
+          "tooltip": "Specify the other details of user which you want to create in JSON format.",
+          "description": "Specify the other details of user which you want to create in JSON format. \nMore details can be found here: https://api.sap.com/api/IdDS_SCIM/resource"
+        }
+      ],
+      "category": "investigation",
+      "annotation": "create_user",
+      "output_schema": {
+        "id": "",
+        "meta": {
+          "created": "",
+          "lastModified": "",
+          "location": "",
+          "version": "",
+          "resourceType": ""
+        },
+        "schemas": [],
+        "userName": "",
+        "active": "",
+        "emails": [
+          {
+            "value": "",
+            "primary": ""
+          }
+        ],
+        "urn:ietf:params:scim:schemas:extension:sap:2.0:User": {
+          "emails": [
+            {
+              "value": "",
+              "primary": ""
+            }
+          ],
+          "userUuid": "",
+          "mailVerified": "",
+          "userId": "",
+          "status": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Update User Details",
+      "operation": "update_user_details",
+      "description": "Updates user details based on input parameter specified.",
+      "parameters": [
+        {
+          "title": "User UUID",
+          "type": "text",
+          "name": "userUUID",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the Unique User ID (UUID) of the user whose details you want to update.",
+          "description": "Specify the Unique User ID (UUID) of the user whose details you want to update."
+        },
+        {
+          "title": "Status",
+          "type": "select",
+          "name": "status",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select if you want to change the current status of user.",
+          "description": "Select if you want to change the current status of user.",
+          "options": [
+            "Active",
+            "Inactive"
+          ]
+        },
+        {
+          "title": "Operations",
+          "name": "operations",
+          "type": "select",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select the operation you want to do on the attribute of the users. You can choose one or more from Add, Remove and Replace.",
+          "description": "Select the operation you want to do on the attribute of the users.",
+          "options": [
+            "Add Attribute",
+            "Remove Attribute",
+            "Replace Attribute"
+          ],
+          "onchange": {
+            "Add Attribute": [
+              {
+                "title": "Attribute Path",
+                "name": "path",
+                "value": "",
+                "type": "text",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "tooltip": "Specify the the path of the user attribute which you want to add.",
+                "description": "Specify the the path of the user attribute which you want to add."
+              },
+              {
+                "title": "Value",
+                "name": "value",
+                "type": "json",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "tooltip": "Specify the the value of the user attribute which you want to add.",
+                "description": "Specify the the value of the user attribute which you want to add. e.g. {\n                  \"value\": \"\"\n                }",
+                "value": {
+                  "value": ""
+                }
+              }
+            ],
+            "Remove Attribute": [
+              {
+                "title": "Attribute Path",
+                "name": "path",
+                "value": "",
+                "type": "text",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "tooltip": "Specify the the path of the user attribute which you want to remove.",
+                "description": "Specify the the path of the user attribute which you want to remove."
+              }
+            ],
+            "Replace Attribute": [
+              {
+                "title": "Attribute Path",
+                "name": "path",
+                "value": "",
+                "type": "text",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "tooltip": "Specify the the path of the user attribute which you want to replace.",
+                "description": "Specify the the path of the user attribute which you want to replace."
+              },
+              {
+                "title": "New Value",
+                "name": "value",
+                "type": "json",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "tooltip": "Specify the the new value of the user attribute.",
+                "description": "Specify the the new value of the user attribute. e.g. {\n                  \"value\": \"\"\n                }",
+                "value": {
+                  "value": ""
+                }
+              }
+            ]
+          }
+        },
+        {
+          "title": "Additional Operations",
+          "type": "json",
+          "name": "add_operations",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": [
+            {
+              "op": "remove",
+              "path": "emails[type eq \"work\" and value eq \"john.smith@example.com\"]"
+            },
+            {
+              "op": "add",
+              "path": "nickName",
+              "value": "John23"
+            }
+          ],
+          "tooltip": "Specify additional operations in JSON format to perform on user attributes.",
+          "description": "Specify additional operations in JSON format to perform on user attributes. "
+        }
+      ],
+      "category": "investigation",
+      "annotation": "update_user_details",
+      "output_schema": {
+        "status": "",
+        "message": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Group List",
+      "operation": "get_group_list",
+      "description": "Retrieves list of groups from Identity Directory based on input parameters specified.",
+      "parameters": [
+        {
+          "title": "Display Name",
+          "type": "text",
+          "name": "displayName",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g. Administrators",
+          "description": "Specify the display name of Group to be retrieved from Identity Directory. e.g. Administrators",
+          "tooltip": "Specify the display name of Group to be retrieved from Identity Directory."
+        },
+        {
+          "title": "Name",
+          "type": "text",
+          "name": "name",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g. test",
+          "description": "Specify the name of group which you want to retrieve from Identity Directory. e.g. test",
+          "tooltip": "Specify the name of group which you want to retrieve from Identity Directory."
+        },
+        {
+          "title": "Filter Query",
+          "type": "text",
+          "name": "filter",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g. externalId eq \"admin_ext\" and displayName eq \"Administrators\"",
+          "tooltip": "Specify the filter query based on which you want to retrieve the groups.",
+          "description": "Specify the filter query based on which you want to retrieve the groups. e.g. externalId eq \"admin_ext\" and displayName eq \"Administrators\". \nFor more details visit: https://api.sap.com/api/IdDS_SCIM/path/getGroups"
+        },
+        {
+          "title": "Start ID",
+          "type": "text",
+          "name": "start_id",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "initial",
+          "tooltip": "Specify the start ID of the group which is returned as the first entry of the query result. Note: if this parameter is not provided then you will not get the \"nextId\" in response to fetch remaining pages.",
+          "description": "Specify the start ID of the group which is returned as the first entry of the query result. By default it is set to initial which will retrieve the first page. Note: if this parameter is not provided then you will not get the \"nextId\" in response to fetch remaining pages."
+        },
+        {
+          "title": "Size",
+          "type": "integer",
+          "name": "count",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 100,
+          "tooltip": "Specify the maximum number of items to be returned per page. Maximum it will retrieve 100 results per page.",
+          "description": "Specify the maximum number of items to be returned per page. A negative value is interpreted as 0, which means that no results should be returned. Anything above 100 will return only 100 results per page."
+        }
+      ],
+      "category": "investigation",
+      "annotation": "get_group_list",
+      "output_schema": {
+        "Resources": [
+          {
+            "id": "",
+            "meta": {
+              "created": "",
+              "lastModified": "",
+              "location": "",
+              "version": "",
+              "resourceType": ""
+            },
+            "schemas": [],
+            "displayName": "",
+            "members": [
+              {
+                "value": "",
+                "$ref": "",
+                "type": ""
+              }
+            ],
+            "urn:sap:cloud:scim:schemas:extension:custom:2.0:Group": {
+              "name": "",
+              "additionalId": "",
+              "description": ""
+            }
+          }
+        ],
+        "totalResults": "",
+        "itemsPerPage": "",
+        "startId": "",
+        "nextId": "",
+        "schemas": []
+      },
+      "enabled": true
+    },
+    {
+      "title": "Delete Group",
+      "operation": "delete_group",
+      "description": "Deletes a group based on specified group ID from Identity Directory.",
+      "parameters": [
+        {
+          "title": "Group ID",
+          "type": "text",
+          "name": "group_id",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify the group ID of the group which to be deleted from Identity Directory.",
+          "tooltip": "Specify the group ID of the group which to be deleted from Identity Directory."
+        }
+      ],
+      "category": "investigation",
+      "annotation": "delete_group",
+      "output_schema": {},
+      "enabled": true
+    },
+    {
+      "title": "Create Group",
+      "operation": "create_group",
+      "description": "Creates a group in Identity Directory.",
+      "parameters": [
+        {
+          "title": "Name",
+          "type": "text",
+          "name": "name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g. Administrators",
+          "tooltip": "Specify the name of group to be created in Identity Directory.",
+          "description": "Specify the name of group to be created in Identity Directory. e.g. Administrators"
+        },
+        {
+          "title": "Display Name",
+          "type": "text",
+          "name": "displayName",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g. ExampleGroup",
+          "tooltip": "Specify the display name of group to be created in Identity Directory.",
+          "description": "Specify the display name of group to be created in Identity Directory. e.g. ExampleGroup"
+        },
+        {
+          "title": "Description",
+          "type": "text",
+          "name": "description",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the description of group to be created in Identity Directory.",
+          "description": "Specify the description of group to be created in Identity Directory."
+        },
+        {
+          "title": "External ID",
+          "type": "text",
+          "name": "externalId",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the external ID of group to be created in Identity Directory",
+          "description": "Specify the external ID of group to be created in Identity Directory"
+        },
+        {
+          "title": "Members",
+          "type": "text",
+          "name": "members",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g. user_id1, user_id2, user_id3",
+          "description": "Specify the comma separated user IDs of of the users which you want to add to the User Group. e.g. user_id1, user_id2, user_id3",
+          "tooltip": "Specify the comma separated user IDs of of the users which you want to add to the User Group. "
+        }
+      ],
+      "category": "investigation",
+      "annotation": "create_group",
+      "output_schema": {
+        "id": "",
+        "meta": {
+          "created": "",
+          "lastModified": "",
+          "location": "",
+          "version": "",
+          "resourceType": ""
+        },
+        "schemas": [],
+        "displayName": "",
+        "urn:sap:cloud:scim:schemas:extension:custom:2.0:Group": {
+          "name": "",
+          "additionalId": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Update Group Members",
+      "operation": "update_group_members",
+      "description": "Updates Group members",
+      "parameters": [
+        {
+          "title": "Group ID",
+          "type": "text",
+          "name": "group_id",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the group ID of the group whose members you want to update.",
+          "description": "Specify the group ID of the group whose members you want to update."
+        },
+        {
+          "title": "Operation",
+          "type": "select",
+          "name": "operation",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select whether you want to add or remove member from group.",
+          "description": "Select the operation you want to do on the group. You can choose one or more from Add Members, Remove Members and Replace Members",
+          "options": [
+            "Add Members",
+            "Remove Members",
+            "Replace Members"
+          ],
+          "onchange": {
+            "Add Members": [
+              {
+                "title": "User UUIDs",
+                "type": "text",
+                "name": "user_uuids",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "placeholder": "e.g. user_id1, user_id2, user_id3",
+                "tooltip": "Specify the Unique User IDs (UUID) of the user which should be added to the group. You can specify multiple comma separated user UUIDs.",
+                "description": "Specify the Unique User ID (UUID) of the user which should be added to the group. You can specify multiple comma separated user UUIDs. e.g. user_id1, user_id2, user_id3"
+              }
+            ],
+            "Remove Members": [
+              {
+                "title": "User UUIDs",
+                "type": "text",
+                "name": "user_uuids",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "placeholder": "e.g. user_id1, user_id2, user_id3",
+                "tooltip": "The Unique User ID (UUID) of the user which should be removed from the group. You can specify multiple comma separated user UUIDs.",
+                "description": "The Unique User ID (UUID) of the user which should be removed from the group. You can specify multiple comma separated user UUIDs. e.g. user_id1, user_id2, user_id3"
+              }
+            ],
+            "Replace Members": [
+              {
+                "title": "Old User UUID",
+                "type": "text",
+                "name": "user_path",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "placeholder": "e.g. old_user_id1, old_user_id2, old_user_id3",
+                "tooltip": "Specify the user UUID of the user which you want to removed from the group. You can specify multiple comma separated user UUIDs.",
+                "description": "Specify the user UUID of the user which you want to removed from the group. You can specify multiple comma separated user UUIDs. e.g. old_user_id1, old_user_id2, old_user_id3"
+              },
+              {
+                "title": "New User UUIDs",
+                "type": "text",
+                "name": "user_uuids",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "placeholder": "e.g. new_user_id1, new_user_id2, new_user_id3",
+                "tooltip": "Specify the user UUIDs of the new users to be added in group.",
+                "description": "Specify the user UUIDs of the new users to be added in group. e.g. new_user_id1, new_user_id2, new_user_id3"
+              }
+            ]
+          }
+        }
+      ],
+      "category": "investigation",
+      "annotation": "update_group_members",
+      "output_schema": {
+        "status": "",
+        "message": ""
+      },
+      "enabled": true
+    }
+  ]
 }

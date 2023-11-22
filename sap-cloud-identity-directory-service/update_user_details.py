@@ -10,9 +10,9 @@ def update_user_details(config, params):
             "op": operation_name,
         }
         if path:
-            _operation["path"]: path
+            _operation["path"] = path
         if value:
-            _operation.update(value)
+            _operation["value"] = value
         return _operation
 
     endpoint = USER_ENDPOINT + str(params.get("userUUID"))

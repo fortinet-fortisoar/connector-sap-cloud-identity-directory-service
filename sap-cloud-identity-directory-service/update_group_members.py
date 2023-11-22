@@ -24,8 +24,9 @@ def update_group_members(config, params):
             members = user_ids.split(",")
         path_strings = []
         for mem in members:
-            path_strings.append("members[value eq \"{0}\"]".format(mem.strip()))
-        return " or ".join(path_strings)
+            path_strings.append("value eq \"{0}\"".format(mem.strip()))
+        path_string = "members[{0}]".format(" or ".join(path_strings))
+        return path_string
     endpoint = GROUP_ENDPOINT + params.get("group_id")
     body_data = {
         "schemas": [
@@ -48,13 +49,9 @@ def update_group_members(config, params):
         }
     else:
         operation = {
-            "Operations": [
-                {
                     "op": "remove",
                     "path": get_attribute_path(params.get('user_uuids'))
                 }
-            ]
-        }
     operations.append(operation)
     body_data['Operations'] = operations
     response = make_rest_api_call(config, endpoint, method='PATCH', json=body_data)

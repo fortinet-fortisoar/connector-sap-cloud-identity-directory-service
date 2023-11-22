@@ -66,7 +66,7 @@
               "status": null,
               "arguments": {
                 "name": "SAP Cloud Identity Directory Service",
-                "config": "''",
+                "config": "",
                 "params": {
                   "start_id": "initial",
                   "count": 100
@@ -149,7 +149,7 @@
               "status": null,
               "arguments": {
                 "name": "SAP Cloud Identity Directory Service",
-                "config": "''",
+                "config": "",
                 "params": [],
                 "version": "1.0.0",
                 "connector": "sap-cloud-identity-directory-service",
@@ -229,106 +229,24 @@
               "status": null,
               "arguments": {
                 "name": "SAP Cloud Identity Directory Service",
-                "config": "''",
+                "config": "",
                 "params": {
                   "givenName": "",
                   "familyName": "",
                   "userType": "Public",
                   "userDetails": {
                     "schemas": [
-                      "urn:ietf:params:scim:schemas:extension:sap:2.0:User",
-                      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+                      "urn:ietf:params:scim:schemas:extension:sap:2.0:User"
                     ],
-                    "password": "",
                     "name": {
-                      "familyName": "",
-                      "givenName": "",
                       "formatted": "",
                       "middleName": "",
                       "honorificPrefix": "",
                       "honorificSuffix": ""
                     },
-                    "profileUrl": "",
-                    "title": "",
-                    "preferredLanguage": "",
-                    "locale": "",
-                    "timezone": "",
+                    "title": "abc",
                     "active": true,
-                    "emails": [
-                      {
-                        "type": "",
-                        "value": "",
-                        "display": "",
-                        "primary": false
-                      }
-                    ],
-                    "phoneNumbers": [
-                      {
-                        "type": "",
-                        "value": "",
-                        "display": "",
-                        "primary": true
-                      }
-                    ],
-                    "photos": [
-                      {
-                        "type": "",
-                        "value": "",
-                        "display": "",
-                        "primary": true
-                      }
-                    ],
-                    "addresses": [
-                      {
-                        "formatted": "",
-                        "primary": true,
-                        "country": "",
-                        "locality": "",
-                        "postalCode": "",
-                        "region": "",
-                        "streetAddress": "",
-                        "type": ""
-                      }
-                    ],
-                    "entitlements": [
-                      {
-                        "type": "",
-                        "value": "",
-                        "primary": true
-                      }
-                    ],
-                    "roles": [
-                      {
-                        "type": "",
-                        "value": "",
-                        "primary": true
-                      }
-                    ],
-                    "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
-                      "division": "",
-                      "costCenter": "",
-                      "organization": "",
-                      "department": "",
-                      "employeeNumber": "",
-                      "manager": {
-                        "value": ""
-                      }
-                    },
-                    "urn:ietf:params:scim:schemas:extension:sap:2.0:User": {
-                      "sourceSystem": 100,
-                      "sourceSystemId": "",
-                      "applicationId": "",
-                      "emailTemplateSetId": "",
-                      "sendMail": true,
-                      "targetUrl": "",
-                      "mailVerified": true,
-                      "userUuid": "",
-                      "sapUserName": "",
-                      "status": "",
-                      "industry": "",
-                      "validFrom": "",
-                      "validTo": ""
-                    }
+                    "profileUrl": ""
                   }
                 },
                 "version": "1.0.0",
@@ -409,17 +327,17 @@
               "status": null,
               "arguments": {
                 "name": "SAP Cloud Identity Directory Service",
-                "config": "''",
+                "config": "",
                 "params": {
                   "add_operations": [
                     {
                       "op": "remove",
-                      "path": "emails[type eq \"work\" and value eq \"john.smith@example.com\"]"
+                      "path": "emails[type eq \"work\" and value eq \"user@example.com\"]"
                     },
                     {
                       "op": "add",
                       "path": "nickName",
-                      "value": "John23"
+                      "value": "user_nickname"
                     }
                   ]
                 },
@@ -501,7 +419,7 @@
               "status": null,
               "arguments": {
                 "name": "SAP Cloud Identity Directory Service",
-                "config": "''",
+                "config": "",
                 "params": {
                   "start_id": "initial",
                   "count": 100
@@ -584,7 +502,7 @@
               "status": null,
               "arguments": {
                 "name": "SAP Cloud Identity Directory Service",
-                "config": "''",
+                "config": "",
                 "params": [],
                 "version": "1.0.0",
                 "connector": "sap-cloud-identity-directory-service",
@@ -664,7 +582,7 @@
               "status": null,
               "arguments": {
                 "name": "SAP Cloud Identity Directory Service",
-                "config": "''",
+                "config": "",
                 "params": [],
                 "version": "1.0.0",
                 "connector": "sap-cloud-identity-directory-service",
@@ -696,7 +614,7 @@
           "uuid": "df24f6b5-0391-4cb2-947c-3775b99495c0",
           "collection": "/api/3/workflow_collections/4ea7f9f8-8a25-4876-81e9-9e20ab80ea37",
           "triggerLimit": null,
-          "description": "Updates Group members",
+          "description": "Updates group members of existing group based on group ID and operation specified.",
           "name": "Update Group Members",
           "tag": "#SAP Cloud Identity Directory Service",
           "recordTags": [
@@ -744,7 +662,7 @@
               "status": null,
               "arguments": {
                 "name": "SAP Cloud Identity Directory Service",
-                "config": "''",
+                "config": "",
                 "params": [],
                 "version": "1.0.0",
                 "connector": "sap-cloud-identity-directory-service",

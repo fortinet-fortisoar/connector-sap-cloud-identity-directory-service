@@ -309,104 +309,9 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "value": {
-            "schemas": [
-              "urn:ietf:params:scim:schemas:extension:sap:2.0:User",
-              "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
-            ],
-            "password": "",
-            "name": {
-              "familyName": "",
-              "givenName": "",
-              "formatted": "",
-              "middleName": "",
-              "honorificPrefix": "",
-              "honorificSuffix": ""
-            },
-            "profileUrl": "",
-            "title": "",
-            "preferredLanguage": "",
-            "locale": "",
-            "timezone": "",
-            "active": true,
-            "emails": [
-              {
-                "type": "",
-                "value": "",
-                "display": "",
-                "primary": false
-              }
-            ],
-            "phoneNumbers": [
-              {
-                "type": "",
-                "value": "",
-                "display": "",
-                "primary": true
-              }
-            ],
-            "photos": [
-              {
-                "type": "",
-                "value": "",
-                "display": "",
-                "primary": true
-              }
-            ],
-            "addresses": [
-              {
-                "formatted": "",
-                "primary": true,
-                "country": "",
-                "locality": "",
-                "postalCode": "",
-                "region": "",
-                "streetAddress": "",
-                "type": ""
-              }
-            ],
-            "entitlements": [
-              {
-                "type": "",
-                "value": "",
-                "primary": true
-              }
-            ],
-            "roles": [
-              {
-                "type": "",
-                "value": "",
-                "primary": true
-              }
-            ],
-            "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
-              "division": "",
-              "costCenter": "",
-              "organization": "",
-              "department": "",
-              "employeeNumber": "",
-              "manager": {
-                "value": ""
-              }
-            },
-            "urn:ietf:params:scim:schemas:extension:sap:2.0:User": {
-              "sourceSystem": 100,
-              "sourceSystemId": "",
-              "applicationId": "",
-              "emailTemplateSetId": "",
-              "sendMail": true,
-              "targetUrl": "",
-              "mailVerified": true,
-              "userUuid": "",
-              "sapUserName": "",
-              "status": "",
-              "industry": "",
-              "validFrom": "",
-              "validTo": ""
-            }
-          },
+          "value": {},
           "tooltip": "Specify the other details of user which you want to create in JSON format.",
-          "description": "Specify the other details of user which you want to create in JSON format. \nMore details can be found here: https://api.sap.com/api/IdDS_SCIM/resource"
+          "description": "Specify the other details of user which you want to create in JSON format. e.g. {\n                    \"schemas\": [\n                      \"urn:ietf:params:scim:schemas:extension:sap:2.0:User\"\n                    ],\n                    \"name\": {\n                      \"formatted\": \"\",\n                      \"middleName\": \"\",\n                      \"honorificPrefix\": \"Mr.\",\n                      \"honorificSuffix\": \"\"\n                    },\n                    \"title\": \"Developer\",\n                    \"active\": true,\n                    \"profileUrl\": \"\"\n                  } \nMore details can be found here: https://api.sap.com/api/IdDS_SCIM/resource"
         }
       ],
       "category": "investigation",
@@ -467,7 +372,7 @@
           "visible": true,
           "editable": true,
           "tooltip": "Select if you want to change the current status of user.",
-          "description": "Select if you want to change the current status of user.",
+          "description": "Select if you want to change the current status of user. You can choose from \"Active\" and \"Inactive\"",
           "options": [
             "Active",
             "Inactive"
@@ -480,8 +385,8 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Select the operation you want to do on the attribute of the users. You can choose one or more from Add, Remove and Replace.",
-          "description": "Select the operation you want to do on the attribute of the users.",
+          "tooltip": "Select the operation you want to do on the attribute of the users.",
+          "description": "Select the operation you want to do on the attribute of the users. You can choose from \"Add Attribute\", \"Remove Attribute\", \"Replace Attribute\".",
           "options": [
             "Add Attribute",
             "Remove Attribute",
@@ -507,11 +412,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "tooltip": "Specify the the value of the user attribute which you want to add.",
-                "description": "Specify the the value of the user attribute which you want to add. e.g. {\n                  \"value\": \"\"\n                }",
-                "value": {
-                  "value": ""
-                }
+                "tooltip": "Specify the the value of the user attribute which you want to add. e.g.  [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]",
+                "description": "Specify the the value of the user attribute which you want to add. e.g.  [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]"
               }
             ],
             "Remove Attribute": [
@@ -546,11 +448,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "tooltip": "Specify the the new value of the user attribute.",
-                "description": "Specify the the new value of the user attribute. e.g. {\n                  \"value\": \"\"\n                }",
-                "value": {
-                  "value": ""
-                }
+                "tooltip": "Specify the the new value of the user attribute. e.g. [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]",
+                "description": "Specify the the new value of the user attribute. e.g. [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]"
               }
             ]
           }
@@ -562,19 +461,9 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "value": [
-            {
-              "op": "remove",
-              "path": "emails[type eq \"work\" and value eq \"john.smith@example.com\"]"
-            },
-            {
-              "op": "add",
-              "path": "nickName",
-              "value": "John23"
-            }
-          ],
+          "value": [],
           "tooltip": "Specify additional operations in JSON format to perform on user attributes.",
-          "description": "Specify additional operations in JSON format to perform on user attributes. "
+          "description": "Specify additional operations in JSON format to perform on user attributes. e.g. [\n            {\n              \"op\": \"remove\",\n              \"path\": \"emails[type eq \\\"work\\\" and value eq \\\"user@example.com\\\"]\"\n            },\n            {\n              \"op\": \"add\",\n              \"path\": \"nickName\",\n              \"value\": \"user_nickname\"\n            }\n          ]"
         }
       ],
       "category": "investigation",
@@ -604,7 +493,7 @@
         {
           "title": "Name",
           "type": "text",
-          "name": "name",
+          "name": "urn:sap:cloud:scim:schemas:extension:custom:2.0:Group:name",
           "required": false,
           "visible": true,
           "editable": true,
@@ -786,7 +675,7 @@
     {
       "title": "Update Group Members",
       "operation": "update_group_members",
-      "description": "Updates Group members",
+      "description": "Updates group members of existing group based on group ID and operation specified.",
       "parameters": [
         {
           "title": "Group ID",
@@ -805,8 +694,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Select whether you want to add or remove member from group.",
-          "description": "Select the operation you want to do on the group. You can choose one or more from Add Members, Remove Members and Replace Members",
+          "tooltip": "Select the operation you want to do on the group.",
+          "description": "Select the operation you want to do on the group. You can choose from Add Members, Remove Members and Replace Members",
           "options": [
             "Add Members",
             "Remove Members",

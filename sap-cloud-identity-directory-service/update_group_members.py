@@ -48,13 +48,9 @@ def update_group_members(config, params):
         }
     else:
         operation = {
-            "Operations": [
-                {
                     "op": "remove",
                     "path": get_attribute_path(params.get('user_uuids'))
                 }
-            ]
-        }
     operations.append(operation)
     body_data['Operations'] = operations
     response = make_rest_api_call(config, endpoint, method='PATCH', json=body_data)

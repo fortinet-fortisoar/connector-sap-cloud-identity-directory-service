@@ -94,7 +94,7 @@
           "visible": true,
           "editable": true,
           "tooltip": "Select the type of users to retrieve.",
-          "description": "Select the type of users to retrieve. You can choose from following options: Customer Employee Partner Public External Onboardee",
+          "description": "Select the type of users to retrieve. You can choose from following options: Customer, Employee, Partner, Public, External and Onboardee",
           "options": [
             "Customer",
             "Employee",
@@ -292,7 +292,7 @@
           "editable": true,
           "value": "Public",
           "tooltip": "select the user type.",
-          "description": "select the user type. You can choose from following options: Customer Employee Partner Public External Onboardee By default it is set to Public.",
+          "description": "select the user type. You can choose from following options: Customer, Employee, Partner, Public, External and Onboardee. By default it is set to Public.",
           "options": [
             "Customer",
             "Employee",
@@ -372,7 +372,7 @@
           "visible": true,
           "editable": true,
           "tooltip": "Select if you want to change the current status of user.",
-          "description": "Select if you want to change the current status of user. You can choose from following options: Active Inactive",
+          "description": "Select if you want to change the current status of user. You can choose from following options: Active and Inactive",
           "options": [
             "Active",
             "Inactive"

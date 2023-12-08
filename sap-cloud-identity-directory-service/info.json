@@ -9,7 +9,7 @@
   "category": "Identity and Access Management",
   "cs_approved": true,
   "cs_compatible": true,
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/sap-cloud-identity-directory-service/740/sap-cloud-identity-directory-service-v1-0-0",
   "configuration": {
     "fields": [
       {
@@ -20,7 +20,7 @@
         "visible": true,
         "editable": true,
         "value": "",
-        "tooltip": "Specify Tenant ID of the SAP Environment",
+        "tooltip": "Specify the tenant ID of the SAP Environment.",
         "description": "Specify the tenant ID of the SAP Environment."
       },
       {
@@ -31,7 +31,7 @@
         "visible": true,
         "editable": true,
         "value": "",
-        "tooltip": "Specify the Client ID of System Identity Key configured in the SAP Environment.",
+        "tooltip": "Specify the Client ID of the System Identity Key configured in the SAP Environment.",
         "description": "Specify the Client ID of the System Identity Key configured in the SAP Environment."
       },
       {
@@ -53,8 +53,8 @@
         "visible": true,
         "required": false,
         "value": true,
-        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set as True."
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified.",
+        "description": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is set to True."
       }
     ]
   },
@@ -62,7 +62,7 @@
     {
       "title": "Get User List",
       "operation": "get_user_list",
-      "description": "Retrieves a list of users based on input parameters specified.",
+      "description": "Retrieves a list of users based on the User UUID, username, user type, or other filter criteria specified.",
       "parameters": [
         {
           "title": "User UUID",
@@ -72,8 +72,8 @@
           "visible": true,
           "editable": true,
           "placeholder": "e.g. 313b0556-8810-48ee-a335-b666d1b786ff",
-          "tooltip": "Specify the UUID of the user to retrieve its details.",
-          "description": "Specify the UUID of the user to retrieve its details. e.g. 313b0556-8810-48ee-a335-b666d1b786ff"
+          "tooltip": "Specify the UUID of the user to retrieve their details.",
+          "description": "Specify the UUID of the user to retrieve their details. For example: 313b0556-8810-48ee-a335-b666d1b786ff."
         },
         {
           "title": "Username",
@@ -84,7 +84,7 @@
           "editable": true,
           "placeholder": "e.g. John",
           "tooltip": "Specify the user name of user to retrieve the details.",
-          "description": "Specify the user name of user to retrieve the details. e.g. John"
+          "description": "Specify the username of the user to retrieve their details. For example: John."
         },
         {
           "title": "User Type",
@@ -93,8 +93,8 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Specify the type of users which you want to retrieve.",
-          "description": "Specify the type of users which you want to retrieve. You can choose from following: \"Customer\", \"Employee\", \"Partner\", \"Public\", \"External\", \"Onboardee\"",
+          "tooltip": "Select the type of users to retrieve.",
+          "description": "Select the type of users to retrieve. You can choose from following options: Customer Employee Partner Public External Onboardee",
           "options": [
             "Customer",
             "Employee",
@@ -112,8 +112,8 @@
           "visible": true,
           "editable": true,
           "placeholder": "Example: emails.value eq \"user@example.com\" and displayName eq \"John\"",
-          "tooltip": "Specify the query based on which you want to retrieve the users.",
-          "description": "Specify the query based on which you want to retrieve the users. Example: emails.value eq \"user@example.com\" and displayName eq \"John\".\nFor more details visit: https://api.sap.com/api/IdDS_SCIM/path/getUsers"
+          "tooltip": "Specify the query to filter the retrieved users.",
+          "description": "Specify the query to filter the retrieved users. For example: emails.value eq \"user@example.com\" and displayName eq \"John\". Refer to https://api.sap.com/api/IdDS_SCIM/path/getUsers for details regarding the query syntax and other information."
         },
         {
           "title": "Start ID",
@@ -123,8 +123,8 @@
           "visible": true,
           "editable": true,
           "value": "initial",
-          "tooltip": "Specify the start ID of the user which is returned as the first entry of the query result. Note: if this parameter is not provided then you will not get the \"nextId\" in response to fetch remaining pages.",
-          "description": "Specify the start ID of the user which is returned as the first entry of the query result. By default it is set to initial which will retrieve the first page. Note: if this parameter is not provided then you will not get the \"nextId\" in response to fetch remaining pages."
+          "tooltip": "Specify the start ID of the user which is returned as the first entry of the query result. NOTE: If this parameter is not provided, you do not receive nextId, in response, to fetch remaining pages.",
+          "description": "Specify the start ID of the user which is returned as the first entry of the query result. By default it is set to initial which retrieves the first page. NOTE: If this parameter is not provided, you do not receive nextId, in response, to fetch remaining pages."
         },
         {
           "title": "Size",
@@ -135,7 +135,7 @@
           "editable": true,
           "value": 100,
           "tooltip": "Specify the maximum number of items to be returned per page. Maximum it will retrieve 100 results per page.",
-          "description": "Specify the maximum number of items to be returned per page. A negative value is interpreted as 0, which means that no results should be returned. Anything above 100 will return only 100 results per page."
+          "description": "Specify the maximum number of items to be returned per page. A negative value is interpreted as 0 and no results are returned. Maximum value is 100. Specifying a value more than 100 returns only 100 results per page."
         }
       ],
       "category": "investigation",
@@ -215,7 +215,7 @@
     {
       "title": "Delete User",
       "operation": "delete_user",
-      "description": "Delete existing user from Identity directory based on User UUID.",
+      "description": "Deletes existing user from Identity directory based on the User UUID specified.",
       "parameters": [
         {
           "title": "User UUID",
@@ -239,7 +239,7 @@
     {
       "title": "Create User",
       "operation": "create_user",
-      "description": "Creates a new user to the Identity directory.",
+      "description": "Creates a new user in the Identity directory based on the user's email address, username, and other input parameters specified.",
       "parameters": [
         {
           "title": "Email Address",
@@ -248,8 +248,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Specify the email address of user to be created in Identity Directory",
-          "description": "Specify the email address of user to be created in Identity Directory"
+          "tooltip": "Specify the email address of user being created in SAP Identity Directory.",
+          "description": "Specify the email address of user being created in SAP Identity Directory."
         },
         {
           "title": "Login Name",
@@ -258,8 +258,8 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Specify the login name of user to be created in Identity Directory",
-          "description": "Specify the login name of user to be created in Identity Directory"
+          "tooltip": "Specify the login name of user being created in SAP Identity Directory.",
+          "description": "Specify the login name of user being created in SAP Identity Directory."
         },
         {
           "title": "First Name",
@@ -269,8 +269,8 @@
           "visible": true,
           "editable": true,
           "value": "",
-          "tooltip": "Specify the first name of user to be created in Identity Directory.",
-          "description": "Specify the first name of user to be created in Identity Directory."
+          "tooltip": "Specify the first name of user being created in SAP Identity Directory.",
+          "description": "Specify the first name of user being created in SAP Identity Directory."
         },
         {
           "title": "Last Name",
@@ -280,8 +280,8 @@
           "visible": true,
           "editable": true,
           "value": "",
-          "tooltip": "Specify the last name of user to be created in Identity Directory",
-          "description": "Specify the last name of user to be created in Identity Directory"
+          "tooltip": "Specify the last name of user being created in SAP Identity Directory.",
+          "description": "Specify the last name of user being created in SAP Identity Directory."
         },
         {
           "title": "User Type",
@@ -292,7 +292,7 @@
           "editable": true,
           "value": "Public",
           "tooltip": "select the user type.",
-          "description": "select the user type. You can choose from following: \"Customer\", \"Employee\", \"Partner\", \"Public\", \"External\", \"Onboardee\". By default it is set as Public",
+          "description": "select the user type. You can choose from following options: Customer Employee Partner Public External Onboardee By default it is set to Public.",
           "options": [
             "Customer",
             "Employee",
@@ -310,8 +310,8 @@
           "visible": true,
           "editable": true,
           "value": {},
-          "tooltip": "Specify the other details of user which you want to create in JSON format.",
-          "description": "Specify the other details of user which you want to create in JSON format. e.g. {\n                    \"schemas\": [\n                      \"urn:ietf:params:scim:schemas:extension:sap:2.0:User\"\n                    ],\n                    \"name\": {\n                      \"formatted\": \"\",\n                      \"middleName\": \"\",\n                      \"honorificPrefix\": \"Mr.\",\n                      \"honorificSuffix\": \"\"\n                    },\n                    \"title\": \"Developer\",\n                    \"active\": true,\n                    \"profileUrl\": \"\"\n                  } \nMore details can be found here: https://api.sap.com/api/IdDS_SCIM/resource"
+          "tooltip": "Specify other details, in JSON format, for the user being created in SAP Identity Directory.",
+          "description": "Specify other details, in JSON format, for the user being created in SAP Identity Directory. For example: { \"schemas\": [ \"urn:ietf:params:scim:schemas:extension:sap:2.0:User\" ], \"name\": { \"formatted\": \"\", \"middleName\": \"\", \"honorificPrefix\": \"Mr.\", \"honorificSuffix\": \"\" }, \"title\": \"Developer\", \"active\": true, \"profileUrl\": \"\" } More details can be found here: https://api.sap.com/api/IdDS_SCIM/resource"
         }
       ],
       "category": "investigation",
@@ -352,7 +352,7 @@
     {
       "title": "Update User Details",
       "operation": "update_user_details",
-      "description": "Updates user details based on input parameter specified.",
+      "description": "Updates user details based on the User UUID, user status, and other input parameters specified.",
       "parameters": [
         {
           "title": "User UUID",
@@ -372,7 +372,7 @@
           "visible": true,
           "editable": true,
           "tooltip": "Select if you want to change the current status of user.",
-          "description": "Select if you want to change the current status of user. You can choose from \"Active\" and \"Inactive\"",
+          "description": "Select if you want to change the current status of user. You can choose from following options: Active Inactive",
           "options": [
             "Active",
             "Inactive"
@@ -385,8 +385,8 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Select the operation you want to do on the attribute of the users.",
-          "description": "Select the operation you want to do on the attribute of the users. You can choose from \"Add Attribute\", \"Remove Attribute\", \"Replace Attribute\".",
+          "tooltip": "Select the operation you want to perform on the user attribute.",
+          "description": "Select the operation you want to perform on the user attribute. You can choose from \"Add Attribute\", \"Remove Attribute\", \"Replace Attribute\".",
           "options": [
             "Add Attribute",
             "Remove Attribute",
@@ -402,8 +402,8 @@
                 "required": false,
                 "visible": true,
                 "editable": true,
-                "tooltip": "Specify the the path of the user attribute which you want to add.",
-                "description": "Specify the the path of the user attribute which you want to add."
+                "tooltip": "Specify the path of the user attribute to add.",
+                "description": "Specify the path of the user attribute to add."
               },
               {
                 "title": "Value",
@@ -412,8 +412,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "tooltip": "Specify the the value of the user attribute which you want to add. e.g.  [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]",
-                "description": "Specify the the value of the user attribute which you want to add. e.g.  [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]"
+                "tooltip": "Specify the value of the user attribute to add. e.g.  [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]",
+                "description": "Specify the value of the user attribute to adde.g.  [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]"
               }
             ],
             "Remove Attribute": [
@@ -425,8 +425,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "tooltip": "Specify the the path of the user attribute which you want to remove.",
-                "description": "Specify the the path of the user attribute which you want to remove."
+                "tooltip": "Specify the path of the user attribute to remove.",
+                "description": "Specify the path of the user attribute to remove. "
               }
             ],
             "Replace Attribute": [
@@ -438,8 +438,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "tooltip": "Specify the the path of the user attribute which you want to replace.",
-                "description": "Specify the the path of the user attribute which you want to replace."
+                "tooltip": "Specify the path of the user attribute to replace.",
+                "description": "Specify the path of the user attribute to replace."
               },
               {
                 "title": "New Value",
@@ -448,8 +448,8 @@
                 "required": true,
                 "visible": true,
                 "editable": true,
-                "tooltip": "Specify the the new value of the user attribute. e.g. [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]",
-                "description": "Specify the the new value of the user attribute. e.g. [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]"
+                "tooltip": "Specify the value of the user attribute to replace. e.g. [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]",
+                "description": "Specify the value of the user attribute to replace. e.g. [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]"
               }
             ]
           }
@@ -463,7 +463,7 @@
           "editable": true,
           "value": [],
           "tooltip": "Specify additional operations in JSON format to perform on user attributes.",
-          "description": "Specify additional operations in JSON format to perform on user attributes. e.g. [\n            {\n              \"op\": \"remove\",\n              \"path\": \"emails[type eq \\\"work\\\" and value eq \\\"user@example.com\\\"]\"\n            },\n            {\n              \"op\": \"add\",\n              \"path\": \"nickName\",\n              \"value\": \"user_nickname\"\n            }\n          ]"
+          "description": "Specify additional operations in JSON format to perform on user attributes. For example: [ { \"op\": \"remove\", \"path\": \"emails[type eq \\\"work\\\" and value eq \\\"user@example.com\\\"]\" }, { \"op\": \"add\", \"path\": \"nickName\", \"value\": \"user_nickname\" } ]"
         }
       ],
       "category": "investigation",
@@ -477,7 +477,7 @@
     {
       "title": "Get Group List",
       "operation": "get_group_list",
-      "description": "Retrieves list of groups from Identity Directory based on input parameters specified.",
+      "description": "Retrieves a list of groups from Identity Directory based on the display name, group name, filter query, and other filter criteria specified.",
       "parameters": [
         {
           "title": "Display Name",
@@ -487,7 +487,7 @@
           "visible": true,
           "editable": true,
           "placeholder": "e.g. Administrators",
-          "description": "Specify the display name of Group to be retrieved from Identity Directory. e.g. Administrators",
+          "description": "Specify the display name of group to be retrieved from Identity Directory. For example: Administrators",
           "tooltip": "Specify the display name of Group to be retrieved from Identity Directory."
         },
         {
@@ -498,7 +498,7 @@
           "visible": true,
           "editable": true,
           "placeholder": "e.g. test",
-          "description": "Specify the name of group which you want to retrieve from Identity Directory. e.g. test",
+          "description": "Specify the name of group to be retrieved from Identity Directory. For example: test",
           "tooltip": "Specify the name of group which you want to retrieve from Identity Directory."
         },
         {
@@ -510,7 +510,7 @@
           "editable": true,
           "placeholder": "e.g. externalId eq \"admin_ext\" and displayName eq \"Administrators\"",
           "tooltip": "Specify the filter query based on which you want to retrieve the groups.",
-          "description": "Specify the filter query based on which you want to retrieve the groups. e.g. externalId eq \"admin_ext\" and displayName eq \"Administrators\". \nFor more details visit: https://api.sap.com/api/IdDS_SCIM/path/getGroups"
+          "description": "Specify the query to filter the retrieved groups. For example: externalId eq \"admin_ext\" and displayName eq \"Administrators\". Refer to https://api.sap.com/api/IdDS_SCIM/path/getGroups for details regarding the query syntax and other information."
         },
         {
           "title": "Start ID",
@@ -521,7 +521,7 @@
           "editable": true,
           "value": "initial",
           "tooltip": "Specify the start ID of the group which is returned as the first entry of the query result. Note: if this parameter is not provided then you will not get the \"nextId\" in response to fetch remaining pages.",
-          "description": "Specify the start ID of the group which is returned as the first entry of the query result. By default it is set to initial which will retrieve the first page. Note: if this parameter is not provided then you will not get the \"nextId\" in response to fetch remaining pages."
+          "description": "Specify the start ID of the group which is returned as the first entry of the query result. By default it is set to initial which retrieves the first page. NOTE: If this parameter is not provided, you do not receive nextId, in response, to fetch remaining pages."
         },
         {
           "title": "Size",
@@ -532,7 +532,7 @@
           "editable": true,
           "value": 100,
           "tooltip": "Specify the maximum number of items to be returned per page. Maximum it will retrieve 100 results per page.",
-          "description": "Specify the maximum number of items to be returned per page. A negative value is interpreted as 0, which means that no results should be returned. Anything above 100 will return only 100 results per page."
+          "description": "Specify the maximum number of items to be returned per page. A negative value is interpreted as 0 and no results are returned. Maximum value is 100. Specifying a value more than 100 returns only 100 results per page."
         }
       ],
       "category": "investigation",
@@ -584,19 +584,22 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "Specify the group ID of the group which to be deleted from Identity Directory.",
+          "description": "Specify the ID of the group to be deleted from Identity Directory.",
           "tooltip": "Specify the group ID of the group which to be deleted from Identity Directory."
         }
       ],
       "category": "investigation",
       "annotation": "delete_group",
-      "output_schema": {},
+      "output_schema": {
+        "status": "",
+        "message": ""
+      },
       "enabled": true
     },
     {
       "title": "Create Group",
       "operation": "create_group",
-      "description": "Creates a group in Identity Directory.",
+      "description": "Creates a group in Identity Directory based on the group name, display name, and other input parameters specified.",
       "parameters": [
         {
           "title": "Name",
@@ -607,7 +610,7 @@
           "editable": true,
           "placeholder": "e.g. Administrators",
           "tooltip": "Specify the name of group to be created in Identity Directory.",
-          "description": "Specify the name of group to be created in Identity Directory. e.g. Administrators"
+          "description": "Specify the name of group being created in SAP Identity Directory. For example: Administrators"
         },
         {
           "title": "Display Name",
@@ -618,7 +621,7 @@
           "editable": true,
           "placeholder": "e.g. ExampleGroup",
           "tooltip": "Specify the display name of group to be created in Identity Directory.",
-          "description": "Specify the display name of group to be created in Identity Directory. e.g. ExampleGroup"
+          "description": "Specify the display name of group being created in SAP Identity Directory. For example: ExampleGroup"
         },
         {
           "title": "Description",
@@ -628,7 +631,7 @@
           "visible": true,
           "editable": true,
           "tooltip": "Specify the description of group to be created in Identity Directory.",
-          "description": "Specify the description of group to be created in Identity Directory."
+          "description": "Specify the description of group being created in SAP Identity Directory."
         },
         {
           "title": "External ID",
@@ -638,7 +641,7 @@
           "visible": true,
           "editable": true,
           "tooltip": "Specify the external ID of group to be created in Identity Directory",
-          "description": "Specify the external ID of group to be created in Identity Directory"
+          "description": "Specify the external ID of group being created in SAP Identity Directory"
         },
         {
           "title": "Members",
@@ -648,7 +651,7 @@
           "visible": true,
           "editable": true,
           "placeholder": "e.g. user_id1, user_id2, user_id3",
-          "description": "Specify the comma separated user IDs of of the users which you want to add to the User Group. e.g. user_id1, user_id2, user_id3",
+          "description": "Specify comma-separated user IDs to add to the User Group. For example: user_id1, user_id2, user_id3",
           "tooltip": "Specify the comma separated user IDs of of the users which you want to add to the User Group. "
         }
       ],
@@ -675,7 +678,7 @@
     {
       "title": "Update Group Members",
       "operation": "update_group_members",
-      "description": "Updates group members of existing group based on group ID and operation specified.",
+      "description": "Updates group members of an existing group based on the group ID and type of update operation specified.",
       "parameters": [
         {
           "title": "Group ID",
@@ -711,7 +714,7 @@
                 "visible": true,
                 "editable": true,
                 "placeholder": "e.g. user_id1, user_id2, user_id3",
-                "tooltip": "Specify the Unique User IDs (UUID) of the user which should be added to the group. You can specify multiple comma separated user UUIDs.",
+                "tooltip": "Specify the comma-separated user UUIDs be added to the group. You can specify multiple comma separated user UUIDs.",
                 "description": "Specify the Unique User ID (UUID) of the user which should be added to the group. You can specify multiple comma separated user UUIDs. e.g. user_id1, user_id2, user_id3"
               }
             ],
@@ -724,8 +727,8 @@
                 "visible": true,
                 "editable": true,
                 "placeholder": "e.g. user_id1, user_id2, user_id3",
-                "tooltip": "The Unique User ID (UUID) of the user which should be removed from the group. You can specify multiple comma separated user UUIDs.",
-                "description": "The Unique User ID (UUID) of the user which should be removed from the group. You can specify multiple comma separated user UUIDs. e.g. user_id1, user_id2, user_id3"
+                "tooltip": "The Unique User ID (UUID) of the users which should be removed from the group. You can specify multiple comma separated user UUIDs.",
+                "description": "The Unique User ID (UUID) of the users which should be removed from the group. You can specify multiple comma separated user UUIDs. e.g. user_id1, user_id2, user_id3"
               }
             ],
             "Replace Members": [
@@ -737,8 +740,8 @@
                 "visible": true,
                 "editable": true,
                 "placeholder": "e.g. old_user_id1, old_user_id2, old_user_id3",
-                "tooltip": "Specify the user UUID of the user which you want to removed from the group. You can specify multiple comma separated user UUIDs.",
-                "description": "Specify the user UUID of the user which you want to removed from the group. You can specify multiple comma separated user UUIDs. e.g. old_user_id1, old_user_id2, old_user_id3"
+                "tooltip": "Specify the user UUID of the user which is to be removed from the group. You can specify multiple comma separated user UUIDs.",
+                "description": "Specify the user UUID of the user which is to be removed from the group. You can specify multiple comma separated user UUIDs. e.g. old_user_id1, old_user_id2, old_user_id3"
               },
               {
                 "title": "New User UUIDs",

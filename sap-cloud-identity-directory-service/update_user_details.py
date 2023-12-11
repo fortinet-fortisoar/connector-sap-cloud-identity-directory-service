@@ -1,3 +1,9 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2023 Fortinet Inc
+Copyright end
+"""
 from connectors.core.connector import get_logger
 from .constants import LOGGER_NAME, USER_ENDPOINT
 from .utils import make_rest_api_call
@@ -24,7 +30,7 @@ def update_user_details(config, params):
     all_operations = []
     status = params.get('status', '')
     if status:
-        status_op = build_operation_object('replace', 'active', {"value": status == 'Active'})
+        status_op = build_operation_object('replace', 'active', status == 'Active')
         all_operations.append(status_op)
     op = params.get('operations')
     if op == 'Add Attribute':

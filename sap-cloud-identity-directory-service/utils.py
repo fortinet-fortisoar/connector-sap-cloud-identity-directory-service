@@ -1,3 +1,9 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2023 Fortinet Inc
+Copyright end
+"""
 import base64
 import requests
 from .constants import REQUEST_TIMEOUT, LOGGER_NAME

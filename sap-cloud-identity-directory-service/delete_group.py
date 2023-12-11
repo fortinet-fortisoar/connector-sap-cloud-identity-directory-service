@@ -1,3 +1,9 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2023 Fortinet Inc
+Copyright end
+"""
 from connectors.core.connector import get_logger
 from .constants import LOGGER_NAME
 from .constants import GROUP_ENDPOINT

@@ -17,7 +17,7 @@ def update_user_details(config, params):
         }
         if path:
             _operation["path"] = path
-        if value:
+        if value is not None:
             _operation["value"] = value
         return _operation
 
